@@ -9,10 +9,14 @@
 import Cocoa
 
 class ViewController: NSViewController {
-                            
+    
+    @IBOutlet weak var mainView: NSView!
+    @IBOutlet weak var sidebarView: NSScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mainView.addSubview(SPAssetGraphView(frame: view.frame))
         // Do any additional setup after loading the view.
                                     
     }

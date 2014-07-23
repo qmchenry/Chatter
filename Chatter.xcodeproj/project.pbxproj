@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A9519827198003CA00D5389D /* test_elsa.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9519826198003CA00D5389D /* test_elsa.wav */; };
+		A9EF0BB61980656200FABBD3 /* SPAssetGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EF0BB51980656200FABBD3 /* SPAssetGraphView.swift */; };
+		A9EF0BB71980687100FABBD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B61978AE1D0009ED47 /* ViewController.swift */; };
 		C40959B51978AE1D0009ED47 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B41978AE1D0009ED47 /* main.swift */; };
-		C40959B71978AE1D0009ED47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B61978AE1D0009ED47 /* ViewController.swift */; };
 		C40959B91978AE1D0009ED47 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B81978AE1D0009ED47 /* Document.swift */; };
 		C40959BB1978AE1D0009ED47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40959BA1978AE1D0009ED47 /* Images.xcassets */; };
 		C40959BE1978AE1D0009ED47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40959BC1978AE1D0009ED47 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		A9519826198003CA00D5389D /* test_elsa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = test_elsa.wav; path = chatter/test_elsa.wav; sourceTree = SOURCE_ROOT; };
+		A9EF0BB51980656200FABBD3 /* SPAssetGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAssetGraphView.swift; sourceTree = "<group>"; };
 		C40959AF1978AE1D0009ED47 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40959B31978AE1D0009ED47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C40959B41978AE1D0009ED47 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				A9519826198003CA00D5389D /* test_elsa.wav */,
 				C40959B21978AE1D0009ED47 /* Supporting Files */,
 				C479BB09197FDC2C00DC4578 /* Chatter-Bridging-Header.h */,
+				A9EF0BB51980656200FABBD3 /* SPAssetGraphView.swift */,
 			);
 			path = Chatter;
 			sourceTree = "<group>";
@@ -234,7 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40959B71978AE1D0009ED47 /* ViewController.swift in Sources */,
+				A9EF0BB71980687100FABBD3 /* ViewController.swift in Sources */,
+				A9EF0BB61980656200FABBD3 /* SPAssetGraphView.swift in Sources */,
 				C40959B51978AE1D0009ED47 /* main.swift in Sources */,
 				C479BB0C197FDC2D00DC4578 /* SPAudioReader.m in Sources */,
 				C40959B91978AE1D0009ED47 /* Document.swift in Sources */,
