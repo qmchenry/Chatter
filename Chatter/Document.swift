@@ -18,13 +18,14 @@ class Document: NSDocument {
     init() {
         super.init()
         // Add your subclass-specific initialization here.
-        let fileUrl = NSBundle.mainBundle().URLForResource("Submarine", withExtension: "aiff")
+        let fileUrl = NSBundle.mainBundle().URLForResource("test_elsa", withExtension: "wav")
         asset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
         
         let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 100)
         let count = SPAudioReader.countOfAssetData(assetData)
         for (var i=0; i<count; i++) {
-            println("\(i) -> \(SPAudioReader.floatFromAssetData(assetData, index: i))")
+            let value = Float(SPAudioReader.floatFromAssetData(assetData, index: i))
+            println("\(i), \(value)")
         }
     }
 

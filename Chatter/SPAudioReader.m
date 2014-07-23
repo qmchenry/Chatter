@@ -89,6 +89,7 @@
                 if (tallyCount == downsampleFactor) {
                     sample = tally / tallyCount;
                     maximum = maximum > sample ? maximum : sample;
+                    NSLog(@"%.0f -> %f", outSamples, sample);
                     [fullSongData appendBytes:&sample length:sizeof(sample)];
                     tally = 0;
                     tallyCount = 0;
@@ -109,14 +110,14 @@
     return nil;
 }
 
-+ (CGFloat) floatFromAssetData:(NSData*)assetData index:(NSInteger)index {
-    CGFloat value = 0.f;
-    [assetData getBytes:&value range:NSMakeRange(index*sizeof(CGFloat), sizeof(CGFloat))];
++ (Float32) floatFromAssetData:(NSData*)assetData index:(NSInteger)index {
+    Float32 value;
+    [assetData getBytes:&value range:NSMakeRange(index*sizeof(Float32), sizeof(Float32))];
     return value;
 }
 
 + (NSInteger) countOfAssetData:(NSData *)assetData {
-    return assetData.length / sizeof(CGFloat);
+    return assetData.length / sizeof(Float32);
 }
 
 @end

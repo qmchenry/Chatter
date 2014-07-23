@@ -13,7 +13,7 @@
 @interface SPAudioReader : NSObject
 
 + (NSData *)dataFromAsset:(AVAsset *)asset downsampleFactor:(NSInteger)downsampleFactor;
-+ (CGFloat) floatFromAssetData:(NSData*)assetData index:(NSInteger)index;
++ (Float32) floatFromAssetData:(NSData*)assetData index:(NSInteger)index;
 + (NSInteger) countOfAssetData:(NSData *)assetData;
 
 @end
