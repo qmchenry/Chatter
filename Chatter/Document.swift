@@ -7,18 +7,30 @@
 //
 
 import Cocoa
+import AVFoundation
+import CoreAudio
+import CoreMedia
 
 class Document: NSDocument {
-                            
+    
+    var asset: AVURLAsset?
+    
     init() {
         super.init()
         // Add your subclass-specific initialization here.
-                                    
+        let fileUrl = NSBundle.mainBundle().URLForResource("Submarine", withExtension: "aiff")
+        asset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
+        
+        let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 100)
+        let count = SPAudioReader.countOfAssetData(assetData)
+        for (var i=0; i<count; i++) {
+            println("\(i) -> \(SPAudioReader.floatFromAssetData(assetData, index: i))")
+        }
     }
 
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
-                                    
+        
         // Add any code here that needs to be executed once the windowController has loaded the document's window.
                                     
     }
