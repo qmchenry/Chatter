@@ -97,6 +97,7 @@
 			children = (
 				C40959B61978AE1D0009ED47 /* ViewController.swift */,
 				C40959B81978AE1D0009ED47 /* Document.swift */,
+				A9EF0BB51980656200FABBD3 /* SPAssetGraphView.swift */,
 				C479BB0A197FDC2D00DC4578 /* SPAudioReader.h */,
 				C479BB0B197FDC2D00DC4578 /* SPAudioReader.m */,
 				C40959BA1978AE1D0009ED47 /* Images.xcassets */,
@@ -105,7 +106,6 @@
 				A9519826198003CA00D5389D /* test_elsa.wav */,
 				C40959B21978AE1D0009ED47 /* Supporting Files */,
 				C479BB09197FDC2C00DC4578 /* Chatter-Bridging-Header.h */,
-				A9EF0BB51980656200FABBD3 /* SPAssetGraphView.swift */,
 			);
 			path = Chatter;
 			sourceTree = "<group>";
@@ -360,6 +360,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Chatter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chatter/Chatter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -374,6 +375,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Chatter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chatter/Chatter-Bridging-Header.h";
 			};

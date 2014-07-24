@@ -89,7 +89,7 @@
                 if (tallyCount == downsampleFactor) {
                     sample = tally / tallyCount;
                     maximum = maximum > sample ? maximum : sample;
-                    NSLog(@"%.0f -> %f", outSamples, sample);
+//                    NSLog(@"%.0f -> %f", outSamples, sample);
                     [fullSongData appendBytes:&sample length:sizeof(sample)];
                     tally = 0;
                     tallyCount = 0;

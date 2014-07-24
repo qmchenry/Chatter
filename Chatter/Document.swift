@@ -14,19 +14,11 @@ import CoreMedia
 class Document: NSDocument {
     
     var asset: AVURLAsset?
+    var viewController: ViewController?
     
     init() {
         super.init()
         // Add your subclass-specific initialization here.
-        let fileUrl = NSBundle.mainBundle().URLForResource("test_elsa", withExtension: "wav")
-        asset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
-        
-        let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 100)
-        let count = SPAudioReader.countOfAssetData(assetData)
-        for (var i=0; i<count; i++) {
-            let value = Float(SPAudioReader.floatFromAssetData(assetData, index: i))
-            println("\(i), \(value)")
-        }
     }
 
     override func windowControllerDidLoadNib(aController: NSWindowController) {
@@ -47,7 +39,20 @@ class Document: NSDocument {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         let windowController = storyboard.instantiateInitialController() as NSWindowController
         self.addWindowController(windowController)
-                                    
+        
+        let fileUrl = NSBundle.mainBundle().URLForResource("test_elsa", withExtension: "wav")
+        asset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
+        
+        let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 200)
+//        let count = SPAudioReader.countOfAssetData(assetData)
+//        for (var i=0; i<count; i++) {
+//            let value = Float(SPAudioReader.floatFromAssetData(assetData, index: i))
+//            println("\(i), \(value)")
+//        }
+        let viewController = windowController.contentViewController as ViewController
+        if let graphView = viewController.graphView {
+            graphView.assetData = assetData
+        }
     }
 
     override func dataOfType(typeName: String?, error outError: NSErrorPointer) -> NSData? {

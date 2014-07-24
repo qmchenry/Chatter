@@ -21,25 +21,49 @@ class SPAssetGraphView: NSView {
         // Initialization code here.
     }
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-
-        println(dirtyRect)
-        var bPath:NSBezierPath = NSBezierPath(rect: dirtyRect)
-        println(bPath)
-        let fillColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
-        fillColor.set()
-        bPath.fill()
-        
-        let borderColor = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    func drawGraph() {
+        var bPath:NSBezierPath = NSBezierPath(rect: frame)
+        let borderColor = NSColor(red: 1.0, green: 0.4, blue: 0.4, alpha: 1.0)
         borderColor.set()
-        bPath.lineWidth = 12.0
+        bPath.lineWidth = 1.0
+        bPath.stroke()
+        bPath.moveToPoint(NSPoint(x: 0, y: frame.size.height/2))
+        bPath.lineToPoint(NSPoint(x: frame.size.width, y: frame.size.height/2))
         bPath.stroke()
         
-        let circleFillColor = NSColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
-        var circleRect = NSMakeRect(dirtyRect.size.width/4, dirtyRect.size.height/4, dirtyRect.size.width/2, dirtyRect.size.height/2)
-        var cPath: NSBezierPath = NSBezierPath(ovalInRect: circleRect)
-        circleFillColor.set()
-        cPath.fill()    }
+        let graphColor = NSColor(calibratedWhite: 0.4, alpha: 1.0)
+        graphColor.set()
+        let count = SPAudioReader.countOfAssetData(assetData)
+        var x: Float = 0.0
+        let xScale = Float(frame.size.width) / Float(count)
+        let yScale = Float((frame.size.height-50)/100)
+        let yHalf = Int(frame.size.height/2 + frame.origin.y)
+        var gPath = NSBezierPath()
+        var gbPath = NSBezierPath()
+        gPath.lineWidth = 1.0
+        gbPath.lineWidth = 1.0
+        for (var i=0; i<count; i++) {
+            let value = Float(SPAudioReader.floatFromAssetData(assetData, index: i) + 50.0)
+            let point = NSPoint(x: Int(x), y: Int(value*yScale) + yHalf )
+            let pointB = NSPoint(x: Int(x), y: Int(-value*yScale) + yHalf )
+            if (i==0) {
+                gPath.moveToPoint(point)
+                gbPath.moveToPoint(pointB)
+            } else {
+                gPath.lineToPoint(point)
+                gbPath.lineToPoint(pointB)
+            }
+            gPath.stroke()
+            gbPath.stroke()
+            //            println("p\(i):\(point)")
+            x += xScale
+        }
+    }
+    
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+        println(dirtyRect)
+        drawGraph()
+    }
     
 }

@@ -12,11 +12,12 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var mainView: NSView!
     @IBOutlet weak var sidebarView: NSScrollView!
+    var graphView: SPAssetGraphView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        mainView.addSubview(SPAssetGraphView(frame: view.frame))
+        graphView = SPAssetGraphView(frame: view.frame)
+        mainView.addSubview(graphView)
         // Do any additional setup after loading the view.
                                     
     }
