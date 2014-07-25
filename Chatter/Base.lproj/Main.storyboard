@@ -670,19 +670,19 @@
             <objects>
                 <viewController id="5gI-5U-AMq" customClass="ViewController" customModule="Chatter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
-                        <rect key="frame" x="0.0" y="0.0" width="660" height="429"/>
+                        <rect key="frame" x="0.0" y="0.0" width="694" height="439"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-Vc-lW0">
-                                <rect key="frame" x="0.0" y="0.0" width="660" height="429"/>
+                            <splitView dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-Vc-lW0">
+                                <rect key="frame" x="0.0" y="0.0" width="694" height="439"/>
                                 <subviews>
-                                    <customView fixedFrame="YES" id="EGg-QT-zaS">
-                                        <rect key="frame" x="0.0" y="0.0" width="185" height="429"/>
+                                    <customView id="EGg-QT-zaS">
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="439"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-4c-VNf">
-                                                <rect key="frame" x="0.0" y="0.0" width="185" height="429"/>
-                                                <clipView key="contentView" ambiguous="YES" misplaced="YES" drawsBackground="NO" id="8Kf-Lw-vss">
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-4c-VNf">
+                                                <rect key="frame" x="0.0" y="0.0" width="195" height="439"/>
+                                                <clipView key="contentView" drawsBackground="NO" id="8Kf-Lw-vss">
                                                     <rect key="frame" x="1" y="1" width="148" height="398"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -692,7 +692,7 @@
                                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="180" minWidth="16" maxWidth="1000" id="cUb-dd-2eA">
+                                                                <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="190" minWidth="16" maxWidth="1000" id="cUb-dd-2eA">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -706,7 +706,7 @@
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView identifier="HeaderCell" id="kMb-tj-m6q">
-                                                                            <rect key="frame" x="1" y="1" width="180" height="17"/>
+                                                                            <rect key="frame" x="1" y="1" width="190" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYS-0d-0U3">
@@ -723,7 +723,7 @@
                                                                             </connections>
                                                                         </tableCellView>
                                                                         <tableCellView identifier="DataCell" id="Vqe-t4-SeL">
-                                                                            <rect key="frame" x="1" y="20" width="180" height="17"/>
+                                                                            <rect key="frame" x="1" y="20" width="190" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uO-s1-Xlj">
@@ -761,10 +761,41 @@
                                                 </scroller>
                                             </scrollView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Wu3-4c-VNf" secondAttribute="bottom" id="A98-83-Vdm"/>
+                                            <constraint firstItem="Wu3-4c-VNf" firstAttribute="leading" secondItem="EGg-QT-zaS" secondAttribute="leading" id="OPn-rM-MtD"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wu3-4c-VNf" secondAttribute="trailing" id="VhB-tl-GJE"/>
+                                            <constraint firstItem="Wu3-4c-VNf" firstAttribute="top" secondItem="EGg-QT-zaS" secondAttribute="top" id="vcs-ik-Idb"/>
+                                        </constraints>
                                     </customView>
-                                    <customView fixedFrame="YES" id="XPF-4P-DoJ" customClass="SPAudioGraphView" customModule="ChatterLib">
-                                        <rect key="frame" x="195" y="0.0" width="465" height="429"/>
+                                    <customView id="XPF-4P-DoJ">
+                                        <rect key="frame" x="205" y="0.0" width="489" height="439"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <splitView dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="JjX-B4-45c">
+                                                <rect key="frame" x="0.0" y="0.0" width="489" height="439"/>
+                                                <subviews>
+                                                    <customView fixedFrame="YES" id="lzO-AR-zEb" customClass="SPAudioGraphView" customModule="ChatterLib">
+                                                        <rect key="frame" x="0.0" y="0.0" width="489" height="210"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </customView>
+                                                    <customView fixedFrame="YES" id="Z1F-wT-hEa">
+                                                        <rect key="frame" x="0.0" y="220" width="489" height="219"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </customView>
+                                                </subviews>
+                                                <holdingPriorities>
+                                                    <real value="250"/>
+                                                    <real value="250"/>
+                                                </holdingPriorities>
+                                            </splitView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="JjX-B4-45c" secondAttribute="trailing" id="6uL-3Y-q6k"/>
+                                            <constraint firstItem="JjX-B4-45c" firstAttribute="leading" secondItem="XPF-4P-DoJ" secondAttribute="leading" id="6yr-6e-emh"/>
+                                            <constraint firstAttribute="bottom" secondItem="JjX-B4-45c" secondAttribute="bottom" id="APb-jD-lL1"/>
+                                            <constraint firstItem="JjX-B4-45c" firstAttribute="top" secondItem="XPF-4P-DoJ" secondAttribute="top" id="Wmj-an-Wd9"/>
+                                        </constraints>
                                     </customView>
                                 </subviews>
                                 <holdingPriorities>
@@ -773,15 +804,21 @@
                                 </holdingPriorities>
                             </splitView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vDp-Vc-lW0" secondAttribute="trailing" id="0oA-39-m6c"/>
+                            <constraint firstItem="vDp-Vc-lW0" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" id="HTJ-CQ-aVq"/>
+                            <constraint firstItem="vDp-Vc-lW0" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" id="WdJ-6M-aKg"/>
+                            <constraint firstAttribute="bottom" secondItem="vDp-Vc-lW0" secondAttribute="bottom" id="bLh-2r-KkZ"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="graphView" destination="XPF-4P-DoJ" id="ESz-vK-Rd5"/>
+                        <outlet property="graphView" destination="lzO-AR-zEb" id="y88-Oq-rE5"/>
                         <outlet property="sidebarView" destination="Wu3-4c-VNf" id="nGn-Zi-2kS"/>
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="719.5"/>
+            <point key="canvasLocation" x="197" y="724.5"/>
         </scene>
     </scenes>
     <resources>
