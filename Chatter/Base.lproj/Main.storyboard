@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A298i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
-        <deployment defaultVersion="1090" identifier="macosx"/>
         <development version="5100" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6185.11"/>
     </dependencies>
@@ -763,7 +762,7 @@
                                             </scrollView>
                                         </subviews>
                                     </customView>
-                                    <customView fixedFrame="YES" id="XPF-4P-DoJ">
+                                    <customView fixedFrame="YES" id="XPF-4P-DoJ" customClass="SPAudioGraphView" customModule="ChatterLib">
                                         <rect key="frame" x="195" y="0.0" width="465" height="429"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </customView>
@@ -776,7 +775,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="mainView" destination="XPF-4P-DoJ" id="Ynn-4a-13F"/>
+                        <outlet property="graphView" destination="XPF-4P-DoJ" id="ESz-vK-Rd5"/>
                         <outlet property="sidebarView" destination="Wu3-4c-VNf" id="nGn-Zi-2kS"/>
                     </connections>
                 </viewController>

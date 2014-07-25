@@ -7,17 +7,15 @@
 //
 
 import Cocoa
+import ChatterLib
 
 class ViewController: NSViewController {
     
-    @IBOutlet weak var mainView: NSView!
+    @IBOutlet weak var graphView: SPAudioGraphView!
     @IBOutlet weak var sidebarView: NSScrollView!
-    var graphView: SPAssetGraphView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        graphView = SPAssetGraphView(frame: view.frame)
-        mainView.addSubview(graphView)
         // Do any additional setup after loading the view.
                                     
     }

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Small Planet Digital. All rights reserved.
 //
 
+import ChatterLib
 import Cocoa
 import AVFoundation
 import CoreAudio
@@ -15,10 +16,10 @@ class Document: NSDocument {
     
     var asset: AVURLAsset?
     var viewController: ViewController?
+//    var graphView: SPAssetGraphView?
     
     init() {
         super.init()
-        // Add your subclass-specific initialization here.
     }
 
     override func windowControllerDidLoadNib(aController: NSWindowController) {
@@ -43,16 +44,17 @@ class Document: NSDocument {
         let fileUrl = NSBundle.mainBundle().URLForResource("test_elsa", withExtension: "wav")
         asset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
         
-        let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 200)
+//        let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 200)
 //        let count = SPAudioReader.countOfAssetData(assetData)
 //        for (var i=0; i<count; i++) {
 //            let value = Float(SPAudioReader.floatFromAssetData(assetData, index: i))
 //            println("\(i), \(value)")
 //        }
-        let viewController = windowController.contentViewController as ViewController
-        if let graphView = viewController.graphView {
-            graphView.assetData = assetData
-        }
+        viewController = windowController.contentViewController as ViewController!
+        viewController!.graphView!.asset = asset
+//        if let graphView = viewController!.graphView {
+//            graphView.asset = asset
+//        }
     }
 
     override func dataOfType(typeName: String?, error outError: NSErrorPointer) -> NSData? {

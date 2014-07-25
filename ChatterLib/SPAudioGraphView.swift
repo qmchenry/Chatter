@@ -1,27 +1,29 @@
 //
-//  SPAssetGraphView.swift
+//  SPAudioGraphView.swift
 //  Chatter
 //
-//  Created by Quinn McHenry on 7/23/14.
+//  Created by Quinn McHenry on 7/24/14.
 //  Copyright (c) 2014 Small Planet Digital. All rights reserved.
 //
 
 import Cocoa
 import ChatterLib
 
-@IBDesignable class SPAssetGraphView: NSView {
+public class SPAudioGraphView: NSView {
 
-    var asset: SPURLAsset? {
-    didSet {
-        self.setNeedsDisplayInRect(self.frame)
-    }
+    var assetData: NSData?
+    public var asset: AVURLAsset? {
+        didSet {
+            assetData = SPAssetReader.dataFromAsset(asset, downsampleFactor: 200)
+            self.setNeedsDisplayInRect(self.frame)
+        }
     }
     
     init(frame: NSRect) {
         super.init(frame: frame)
         // Initialization code here.
     }
-
+    
     func drawGraph() {
         var bPath:NSBezierPath = NSBezierPath(rect: frame)
         let borderColor = NSColor(red: 1.0, green: 0.4, blue: 0.4, alpha: 1.0)
@@ -34,7 +36,7 @@ import ChatterLib
         
         let graphColor = NSColor(calibratedWhite: 0.4, alpha: 1.0)
         graphColor.set()
-        let count = SPAssetReader.countOfAssetData(asset?.assetData)
+        let count = SPAssetReader.countOfAssetData(assetData)
         var x: Float = 0.0
         let xScale = Float(frame.size.width) / Float(count)
         let yScale = Float((frame.size.height-50)/100)
@@ -44,7 +46,7 @@ import ChatterLib
         gPath.lineWidth = 1.0
         gbPath.lineWidth = 1.0
         for (var i=0; i<count; i++) {
-            let value = Float(SPAssetReader.floatFromAssetData(asset!.assetData, index: i) + 50.0)
+            let value = Float(SPAssetReader.floatFromAssetData(assetData, index: i) + 50.0)
             let point = NSPoint(x: Int(x), y: Int(value*yScale) + yHalf )
             let pointB = NSPoint(x: Int(x), y: Int(-value*yScale) + yHalf )
             if (i==0) {
@@ -61,10 +63,9 @@ import ChatterLib
         }
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    override public func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         println(dirtyRect)
         drawGraph()
     }
-    
 }
