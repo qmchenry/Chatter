@@ -39,7 +39,7 @@ public class SPAudioGraphView: NSView {
         let count = SPAssetReader.countOfAssetData(assetData)
         var x: Float = 0.0
         let xScale = Float(frame.size.width) / Float(count)
-        let yScale = Float((frame.size.height-50)/100)
+        let yScale = Float((frame.size.height-50.0)/100.0)
         let yHalf = Int(frame.size.height/2 + frame.origin.y)
         var gPath = NSBezierPath()
         var gbPath = NSBezierPath()

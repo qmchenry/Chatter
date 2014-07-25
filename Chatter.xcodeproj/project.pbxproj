@@ -86,9 +86,6 @@
 		C40959C81978AE1E0009ED47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C40959C91978AE1E0009ED47 /* ChatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterTests.swift; sourceTree = "<group>"; };
 		C40959D31978C1CD0009ED47 /* Submarine.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Submarine.aiff; sourceTree = "<group>"; };
-		C419EF3D1982883C001161BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		C419EF3E1982883C001161BF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
-		C419EF3F1982883C001161BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C419EF481982895E001161BF /* ChatterLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatterLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C419EF4B1982895E001161BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C419EF4C1982895E001161BF /* ChatterLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatterLib.h; sourceTree = "<group>"; };
@@ -152,9 +149,6 @@
 		C40959A61978AE1D0009ED47 = {
 			isa = PBXGroup;
 			children = (
-				C419EF3D1982883C001161BF /* AVFoundation.framework */,
-				C419EF3E1982883C001161BF /* CoreMedia.framework */,
-				C419EF3F1982883C001161BF /* Foundation.framework */,
 				C40959B11978AE1D0009ED47 /* Chatter */,
 				C40959C61978AE1E0009ED47 /* ChatterTests */,
 				C419EF491982895E001161BF /* ChatterLib */,
@@ -753,6 +747,7 @@
 				C419EF631982895F001161BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C419EF641982895F001161BF /* Build configuration list for PBXNativeTarget "ChatterLibTests" */ = {
 			isa = XCConfigurationList;
@@ -761,6 +756,7 @@
 				C419EF661982895F001161BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
