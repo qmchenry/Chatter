@@ -3,7 +3,7 @@
 //  ChatterLibTests
 //
 //  Created by Quinn McHenry on 7/25/14.
-//  Copyright (c) 2014 Small Planet Digital. All rights reserved.
+//  Copyright (c) 2014 Small Planet. All rights reserved.
 //
 
 import Cocoa

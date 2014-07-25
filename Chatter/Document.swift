@@ -2,59 +2,43 @@
 //  Document.swift
 //  Chatter
 //
-//  Created by Quinn McHenry on 7/17/14.
-//  Copyright (c) 2014 Small Planet Digital. All rights reserved.
+//  Created by Quinn McHenry on 7/25/14.
+//  Copyright (c) 2014 Small Planet. All rights reserved.
 //
 
-import ChatterLib
 import Cocoa
-import AVFoundation
-import CoreAudio
-import CoreMedia
+import ChatterLib
 
 class Document: NSDocument {
-    
-    var asset: AVURLAsset?
-    var viewController: ViewController?
-//    var graphView: SPAssetGraphView?
+                            
+    @IBOutlet weak var graphView: SPAudioGraphView!
+    var currentAsset: AVURLAsset?
     
     init() {
         super.init()
+        // Add your subclass-specific initialization here.
+                                    
     }
 
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
-        
-        // Add any code here that needs to be executed once the windowController has loaded the document's window.
                                     
+        // Add any code here that needs to be executed once the windowController has loaded the document's window.
+        
+        let fileUrl = NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav")
+        currentAsset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
+        graphView!.asset = currentAsset
+        
     }
 
     override class func autosavesInPlace() -> Bool {
         return true
     }
 
-    override func makeWindowControllers() {
-        // Returns the Storyboard that contains your Document window.
-                                    
-
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let windowController = storyboard.instantiateInitialController() as NSWindowController
-        self.addWindowController(windowController)
-        
-        let fileUrl = NSBundle.mainBundle().URLForResource("test_elsa", withExtension: "wav")
-        asset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
-        
-//        let assetData = SPAudioReader.dataFromAsset(asset, downsampleFactor: 200)
-//        let count = SPAudioReader.countOfAssetData(assetData)
-//        for (var i=0; i<count; i++) {
-//            let value = Float(SPAudioReader.floatFromAssetData(assetData, index: i))
-//            println("\(i), \(value)")
-//        }
-        viewController = windowController.contentViewController as ViewController!
-        viewController!.graphView!.asset = asset
-//        if let graphView = viewController!.graphView {
-//            graphView.asset = asset
-//        }
+    override var windowNibName: String {
+        // Returns the nib file name of the document
+        // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this property and override -makeWindowControllers instead.
+        return "Document"
     }
 
     override func dataOfType(typeName: String?, error outError: NSErrorPointer) -> NSData? {

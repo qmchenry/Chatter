@@ -7,66 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A9519827198003CA00D5389D /* test_elsa.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9519826198003CA00D5389D /* test_elsa.wav */; };
-		A9EF0BB71980687100FABBD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B61978AE1D0009ED47 /* ViewController.swift */; };
-		C40959B51978AE1D0009ED47 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B41978AE1D0009ED47 /* main.swift */; };
-		C40959B91978AE1D0009ED47 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959B81978AE1D0009ED47 /* Document.swift */; };
-		C40959BB1978AE1D0009ED47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40959BA1978AE1D0009ED47 /* Images.xcassets */; };
-		C40959BE1978AE1D0009ED47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40959BC1978AE1D0009ED47 /* Main.storyboard */; };
-		C40959CA1978AE1E0009ED47 /* ChatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40959C91978AE1E0009ED47 /* ChatterTests.swift */; };
-		C40959D41978C1CD0009ED47 /* Submarine.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C40959D31978C1CD0009ED47 /* Submarine.aiff */; };
-		C419EF4D1982895E001161BF /* ChatterLib.h in Headers */ = {isa = PBXBuildFile; fileRef = C419EF4C1982895E001161BF /* ChatterLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C419EF531982895E001161BF /* ChatterLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C419EF481982895E001161BF /* ChatterLib.framework */; };
-		C419EF5A1982895E001161BF /* ChatterLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419EF591982895E001161BF /* ChatterLibTests.swift */; };
-		C419EF5D1982895E001161BF /* ChatterLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C419EF481982895E001161BF /* ChatterLib.framework */; };
-		C419EF5E1982895E001161BF /* ChatterLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C419EF481982895E001161BF /* ChatterLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C419EF6B198289A6001161BF /* SPAssetReader.h in Headers */ = {isa = PBXBuildFile; fileRef = C419EF67198289A6001161BF /* SPAssetReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C419EF6C198289A6001161BF /* SPAssetReader.m in Sources */ = {isa = PBXBuildFile; fileRef = C419EF68198289A6001161BF /* SPAssetReader.m */; };
-		C419EF6D198289A6001161BF /* SPAudioGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419EF69198289A6001161BF /* SPAudioGraphView.swift */; };
-		C419EF6E198289A6001161BF /* SPURLAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419EF6A198289A6001161BF /* SPURLAsset.swift */; };
-		C479BB0E197FE28900DC4578 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C479BB0D197FE28900DC4578 /* AVFoundation.framework */; };
-		C479BB10197FE2AA00DC4578 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C479BB0F197FE2AA00DC4578 /* CoreMedia.framework */; };
+		A95FFAFE1982C67300CDBE54 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFAFD1982C67300CDBE54 /* main.swift */; };
+		A95FFB001982C67300CDBE54 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFAFF1982C67300CDBE54 /* Document.swift */; };
+		A95FFB031982C67300CDBE54 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95FFB011982C67300CDBE54 /* Document.xib */; };
+		A95FFB051982C67300CDBE54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95FFB041982C67300CDBE54 /* Images.xcassets */; };
+		A95FFB081982C67300CDBE54 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95FFB061982C67300CDBE54 /* MainMenu.xib */; };
+		A95FFB141982C67300CDBE54 /* ChatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB131982C67300CDBE54 /* ChatterTests.swift */; };
+		A95FFB271982C9D500CDBE54 /* ChatterLib.h in Headers */ = {isa = PBXBuildFile; fileRef = A95FFB261982C9D500CDBE54 /* ChatterLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A95FFB2D1982C9D500CDBE54 /* ChatterLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95FFB221982C9D500CDBE54 /* ChatterLib.framework */; };
+		A95FFB341982C9D500CDBE54 /* ChatterLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB331982C9D500CDBE54 /* ChatterLibTests.swift */; };
+		A95FFB371982C9D500CDBE54 /* ChatterLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95FFB221982C9D500CDBE54 /* ChatterLib.framework */; };
+		A95FFB381982C9D500CDBE54 /* ChatterLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A95FFB221982C9D500CDBE54 /* ChatterLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C40959C41978AE1E0009ED47 /* PBXContainerItemProxy */ = {
+		A95FFB0E1982C67300CDBE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C40959A71978AE1D0009ED47 /* Project object */;
+			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C40959AE1978AE1D0009ED47;
+			remoteGlobalIDString = A95FFAF71982C67300CDBE54;
 			remoteInfo = Chatter;
 		};
-		C419EF541982895E001161BF /* PBXContainerItemProxy */ = {
+		A95FFB2E1982C9D500CDBE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C40959A71978AE1D0009ED47 /* Project object */;
+			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C419EF471982895E001161BF;
+			remoteGlobalIDString = A95FFB211982C9D500CDBE54;
 			remoteInfo = ChatterLib;
 		};
-		C419EF5B1982895E001161BF /* PBXContainerItemProxy */ = {
+		A95FFB351982C9D500CDBE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C40959A71978AE1D0009ED47 /* Project object */;
+			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C419EF471982895E001161BF;
+			remoteGlobalIDString = A95FFB211982C9D500CDBE54;
 			remoteInfo = ChatterLib;
 		};
-		C419EF5F1982895F001161BF /* PBXContainerItemProxy */ = {
+		A95FFB391982C9D500CDBE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C40959A71978AE1D0009ED47 /* Project object */;
+			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C419EF471982895E001161BF;
+			remoteGlobalIDString = A95FFB211982C9D500CDBE54;
+			remoteInfo = ChatterLib;
+		};
+		A95FFB421982C9D600CDBE54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A95FFB211982C9D500CDBE54;
 			remoteInfo = ChatterLib;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A91743FA19815633002F09D4 /* Embed Frameworks */ = {
+		A95FFB3E1982C9D500CDBE54 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C419EF5E1982895E001161BF /* ChatterLib.framework in Embed Frameworks */,
+				A95FFB381982C9D500CDBE54 /* ChatterLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,176 +73,148 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A9519826198003CA00D5389D /* test_elsa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = test_elsa.wav; path = chatter/test_elsa.wav; sourceTree = SOURCE_ROOT; };
-		C40959AF1978AE1D0009ED47 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C40959B31978AE1D0009ED47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C40959B41978AE1D0009ED47 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		C40959B61978AE1D0009ED47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C40959B81978AE1D0009ED47 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		C40959BA1978AE1D0009ED47 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C40959BD1978AE1D0009ED47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C40959C31978AE1D0009ED47 /* ChatterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C40959C81978AE1E0009ED47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C40959C91978AE1E0009ED47 /* ChatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterTests.swift; sourceTree = "<group>"; };
-		C40959D31978C1CD0009ED47 /* Submarine.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Submarine.aiff; sourceTree = "<group>"; };
-		C419EF481982895E001161BF /* ChatterLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatterLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C419EF4B1982895E001161BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C419EF4C1982895E001161BF /* ChatterLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatterLib.h; sourceTree = "<group>"; };
-		C419EF521982895E001161BF /* ChatterLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C419EF581982895E001161BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C419EF591982895E001161BF /* ChatterLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterLibTests.swift; sourceTree = "<group>"; };
-		C419EF67198289A6001161BF /* SPAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAssetReader.h; sourceTree = "<group>"; };
-		C419EF68198289A6001161BF /* SPAssetReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAssetReader.m; sourceTree = "<group>"; };
-		C419EF69198289A6001161BF /* SPAudioGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAudioGraphView.swift; sourceTree = "<group>"; };
-		C419EF6A198289A6001161BF /* SPURLAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPURLAsset.swift; sourceTree = "<group>"; };
-		C479BB09197FDC2C00DC4578 /* Chatter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chatter-Bridging-Header.h"; sourceTree = "<group>"; };
-		C479BB0D197FE28900DC4578 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C479BB0F197FE2AA00DC4578 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A95FFAF81982C67300CDBE54 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A95FFAFC1982C67300CDBE54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A95FFAFD1982C67300CDBE54 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A95FFAFF1982C67300CDBE54 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		A95FFB021982C67300CDBE54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
+		A95FFB041982C67300CDBE54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A95FFB071982C67300CDBE54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A95FFB0D1982C67300CDBE54 /* ChatterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A95FFB121982C67300CDBE54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A95FFB131982C67300CDBE54 /* ChatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterTests.swift; sourceTree = "<group>"; };
+		A95FFB221982C9D500CDBE54 /* ChatterLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatterLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A95FFB251982C9D500CDBE54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A95FFB261982C9D500CDBE54 /* ChatterLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatterLib.h; sourceTree = "<group>"; };
+		A95FFB2C1982C9D500CDBE54 /* ChatterLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A95FFB321982C9D500CDBE54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A95FFB331982C9D500CDBE54 /* ChatterLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterLibTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C40959AC1978AE1D0009ED47 /* Frameworks */ = {
+		A95FFAF51982C67300CDBE54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C479BB10197FE2AA00DC4578 /* CoreMedia.framework in Frameworks */,
-				C419EF5D1982895E001161BF /* ChatterLib.framework in Frameworks */,
-				C479BB0E197FE28900DC4578 /* AVFoundation.framework in Frameworks */,
+				A95FFB371982C9D500CDBE54 /* ChatterLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C40959C01978AE1D0009ED47 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C419EF441982895E001161BF /* Frameworks */ = {
+		A95FFB0A1982C67300CDBE54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C419EF4F1982895E001161BF /* Frameworks */ = {
+		A95FFB1E1982C9D500CDBE54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C419EF531982895E001161BF /* ChatterLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A95FFB291982C9D500CDBE54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A95FFB2D1982C9D500CDBE54 /* ChatterLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A9EF0BB819814A8100FABBD3 /* Frameworks */ = {
+		A95FFAEF1982C67300CDBE54 = {
 			isa = PBXGroup;
 			children = (
-				C479BB0F197FE2AA00DC4578 /* CoreMedia.framework */,
-				C479BB0D197FE28900DC4578 /* AVFoundation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C40959A61978AE1D0009ED47 = {
-			isa = PBXGroup;
-			children = (
-				C40959B11978AE1D0009ED47 /* Chatter */,
-				C40959C61978AE1E0009ED47 /* ChatterTests */,
-				C419EF491982895E001161BF /* ChatterLib */,
-				C419EF561982895E001161BF /* ChatterLibTests */,
-				C40959B01978AE1D0009ED47 /* Products */,
+				A95FFAFA1982C67300CDBE54 /* Chatter */,
+				A95FFB101982C67300CDBE54 /* ChatterTests */,
+				A95FFB231982C9D500CDBE54 /* ChatterLib */,
+				A95FFB301982C9D500CDBE54 /* ChatterLibTests */,
+				A95FFAF91982C67300CDBE54 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C40959B01978AE1D0009ED47 /* Products */ = {
+		A95FFAF91982C67300CDBE54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C40959AF1978AE1D0009ED47 /* Chatter.app */,
-				C40959C31978AE1D0009ED47 /* ChatterTests.xctest */,
-				C419EF481982895E001161BF /* ChatterLib.framework */,
-				C419EF521982895E001161BF /* ChatterLibTests.xctest */,
+				A95FFAF81982C67300CDBE54 /* Chatter.app */,
+				A95FFB0D1982C67300CDBE54 /* ChatterTests.xctest */,
+				A95FFB221982C9D500CDBE54 /* ChatterLib.framework */,
+				A95FFB2C1982C9D500CDBE54 /* ChatterLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C40959B11978AE1D0009ED47 /* Chatter */ = {
+		A95FFAFA1982C67300CDBE54 /* Chatter */ = {
 			isa = PBXGroup;
 			children = (
-				C40959B61978AE1D0009ED47 /* ViewController.swift */,
-				C40959B81978AE1D0009ED47 /* Document.swift */,
-				C40959BA1978AE1D0009ED47 /* Images.xcassets */,
-				C40959BC1978AE1D0009ED47 /* Main.storyboard */,
-				C40959D31978C1CD0009ED47 /* Submarine.aiff */,
-				A9519826198003CA00D5389D /* test_elsa.wav */,
-				C479BB09197FDC2C00DC4578 /* Chatter-Bridging-Header.h */,
-				C40959B21978AE1D0009ED47 /* Supporting Files */,
-				A9EF0BB819814A8100FABBD3 /* Frameworks */,
+				A95FFAFF1982C67300CDBE54 /* Document.swift */,
+				A95FFB011982C67300CDBE54 /* Document.xib */,
+				A95FFB041982C67300CDBE54 /* Images.xcassets */,
+				A95FFB061982C67300CDBE54 /* MainMenu.xib */,
+				A95FFAFB1982C67300CDBE54 /* Supporting Files */,
 			);
 			path = Chatter;
 			sourceTree = "<group>";
 		};
-		C40959B21978AE1D0009ED47 /* Supporting Files */ = {
+		A95FFAFB1982C67300CDBE54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C40959B31978AE1D0009ED47 /* Info.plist */,
-				C40959B41978AE1D0009ED47 /* main.swift */,
+				A95FFAFC1982C67300CDBE54 /* Info.plist */,
+				A95FFAFD1982C67300CDBE54 /* main.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C40959C61978AE1E0009ED47 /* ChatterTests */ = {
+		A95FFB101982C67300CDBE54 /* ChatterTests */ = {
 			isa = PBXGroup;
 			children = (
-				C40959C91978AE1E0009ED47 /* ChatterTests.swift */,
-				C40959C71978AE1E0009ED47 /* Supporting Files */,
+				A95FFB131982C67300CDBE54 /* ChatterTests.swift */,
+				A95FFB111982C67300CDBE54 /* Supporting Files */,
 			);
 			path = ChatterTests;
 			sourceTree = "<group>";
 		};
-		C40959C71978AE1E0009ED47 /* Supporting Files */ = {
+		A95FFB111982C67300CDBE54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C40959C81978AE1E0009ED47 /* Info.plist */,
+				A95FFB121982C67300CDBE54 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C419EF491982895E001161BF /* ChatterLib */ = {
+		A95FFB231982C9D500CDBE54 /* ChatterLib */ = {
 			isa = PBXGroup;
 			children = (
-				C419EF67198289A6001161BF /* SPAssetReader.h */,
-				C419EF68198289A6001161BF /* SPAssetReader.m */,
-				C419EF69198289A6001161BF /* SPAudioGraphView.swift */,
-				C419EF6A198289A6001161BF /* SPURLAsset.swift */,
-				C419EF4C1982895E001161BF /* ChatterLib.h */,
-				C419EF4A1982895E001161BF /* Supporting Files */,
+				A95FFB261982C9D500CDBE54 /* ChatterLib.h */,
+				A95FFB241982C9D500CDBE54 /* Supporting Files */,
 			);
 			path = ChatterLib;
 			sourceTree = "<group>";
 		};
-		C419EF4A1982895E001161BF /* Supporting Files */ = {
+		A95FFB241982C9D500CDBE54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C419EF4B1982895E001161BF /* Info.plist */,
+				A95FFB251982C9D500CDBE54 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C419EF561982895E001161BF /* ChatterLibTests */ = {
+		A95FFB301982C9D500CDBE54 /* ChatterLibTests */ = {
 			isa = PBXGroup;
 			children = (
-				C419EF591982895E001161BF /* ChatterLibTests.swift */,
-				C419EF571982895E001161BF /* Supporting Files */,
+				A95FFB331982C9D500CDBE54 /* ChatterLibTests.swift */,
+				A95FFB311982C9D500CDBE54 /* Supporting Files */,
 			);
 			path = ChatterLibTests;
 			sourceTree = "<group>";
 		};
-		C419EF571982895E001161BF /* Supporting Files */ = {
+		A95FFB311982C9D500CDBE54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C419EF581982895E001161BF /* Info.plist */,
+				A95FFB321982C9D500CDBE54 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,64 +222,63 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C419EF451982895E001161BF /* Headers */ = {
+		A95FFB1F1982C9D500CDBE54 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C419EF4D1982895E001161BF /* ChatterLib.h in Headers */,
-				C419EF6B198289A6001161BF /* SPAssetReader.h in Headers */,
+				A95FFB271982C9D500CDBE54 /* ChatterLib.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C40959AE1978AE1D0009ED47 /* Chatter */ = {
+		A95FFAF71982C67300CDBE54 /* Chatter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C40959CD1978AE1E0009ED47 /* Build configuration list for PBXNativeTarget "Chatter" */;
+			buildConfigurationList = A95FFB171982C67300CDBE54 /* Build configuration list for PBXNativeTarget "Chatter" */;
 			buildPhases = (
-				C40959AB1978AE1D0009ED47 /* Sources */,
-				C40959AC1978AE1D0009ED47 /* Frameworks */,
-				C40959AD1978AE1D0009ED47 /* Resources */,
-				A91743FA19815633002F09D4 /* Embed Frameworks */,
+				A95FFAF41982C67300CDBE54 /* Sources */,
+				A95FFAF51982C67300CDBE54 /* Frameworks */,
+				A95FFAF61982C67300CDBE54 /* Resources */,
+				A95FFB3E1982C9D500CDBE54 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C419EF5C1982895E001161BF /* PBXTargetDependency */,
-				C419EF601982895F001161BF /* PBXTargetDependency */,
+				A95FFB361982C9D500CDBE54 /* PBXTargetDependency */,
+				A95FFB3A1982C9D500CDBE54 /* PBXTargetDependency */,
 			);
 			name = Chatter;
 			productName = Chatter;
-			productReference = C40959AF1978AE1D0009ED47 /* Chatter.app */;
+			productReference = A95FFAF81982C67300CDBE54 /* Chatter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C40959C21978AE1D0009ED47 /* ChatterTests */ = {
+		A95FFB0C1982C67300CDBE54 /* ChatterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C40959D01978AE1E0009ED47 /* Build configuration list for PBXNativeTarget "ChatterTests" */;
+			buildConfigurationList = A95FFB1A1982C67300CDBE54 /* Build configuration list for PBXNativeTarget "ChatterTests" */;
 			buildPhases = (
-				C40959BF1978AE1D0009ED47 /* Sources */,
-				C40959C01978AE1D0009ED47 /* Frameworks */,
-				C40959C11978AE1D0009ED47 /* Resources */,
+				A95FFB091982C67300CDBE54 /* Sources */,
+				A95FFB0A1982C67300CDBE54 /* Frameworks */,
+				A95FFB0B1982C67300CDBE54 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C40959C51978AE1E0009ED47 /* PBXTargetDependency */,
+				A95FFB0F1982C67300CDBE54 /* PBXTargetDependency */,
 			);
 			name = ChatterTests;
 			productName = ChatterTests;
-			productReference = C40959C31978AE1D0009ED47 /* ChatterTests.xctest */;
+			productReference = A95FFB0D1982C67300CDBE54 /* ChatterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C419EF471982895E001161BF /* ChatterLib */ = {
+		A95FFB211982C9D500CDBE54 /* ChatterLib */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C419EF611982895F001161BF /* Build configuration list for PBXNativeTarget "ChatterLib" */;
+			buildConfigurationList = A95FFB3B1982C9D500CDBE54 /* Build configuration list for PBXNativeTarget "ChatterLib" */;
 			buildPhases = (
-				C419EF431982895E001161BF /* Sources */,
-				C419EF441982895E001161BF /* Frameworks */,
-				C419EF451982895E001161BF /* Headers */,
-				C419EF461982895E001161BF /* Resources */,
+				A95FFB1D1982C9D500CDBE54 /* Sources */,
+				A95FFB1E1982C9D500CDBE54 /* Frameworks */,
+				A95FFB1F1982C9D500CDBE54 /* Headers */,
+				A95FFB201982C9D500CDBE54 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -316,53 +286,54 @@
 			);
 			name = ChatterLib;
 			productName = ChatterLib;
-			productReference = C419EF481982895E001161BF /* ChatterLib.framework */;
+			productReference = A95FFB221982C9D500CDBE54 /* ChatterLib.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C419EF511982895E001161BF /* ChatterLibTests */ = {
+		A95FFB2B1982C9D500CDBE54 /* ChatterLibTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C419EF641982895F001161BF /* Build configuration list for PBXNativeTarget "ChatterLibTests" */;
+			buildConfigurationList = A95FFB3F1982C9D500CDBE54 /* Build configuration list for PBXNativeTarget "ChatterLibTests" */;
 			buildPhases = (
-				C419EF4E1982895E001161BF /* Sources */,
-				C419EF4F1982895E001161BF /* Frameworks */,
-				C419EF501982895E001161BF /* Resources */,
+				A95FFB281982C9D500CDBE54 /* Sources */,
+				A95FFB291982C9D500CDBE54 /* Frameworks */,
+				A95FFB2A1982C9D500CDBE54 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C419EF551982895E001161BF /* PBXTargetDependency */,
+				A95FFB2F1982C9D500CDBE54 /* PBXTargetDependency */,
+				A95FFB431982C9D600CDBE54 /* PBXTargetDependency */,
 			);
 			name = ChatterLibTests;
 			productName = ChatterLibTests;
-			productReference = C419EF521982895E001161BF /* ChatterLibTests.xctest */;
+			productReference = A95FFB2C1982C9D500CDBE54 /* ChatterLibTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C40959A71978AE1D0009ED47 /* Project object */ = {
+		A95FFAF01982C67300CDBE54 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "Small Planet Digital";
+				ORGANIZATIONNAME = "Small Planet";
 				TargetAttributes = {
-					C40959AE1978AE1D0009ED47 = {
+					A95FFAF71982C67300CDBE54 = {
 						CreatedOnToolsVersion = 6.0;
 					};
-					C40959C21978AE1D0009ED47 = {
+					A95FFB0C1982C67300CDBE54 = {
 						CreatedOnToolsVersion = 6.0;
-						TestTargetID = C40959AE1978AE1D0009ED47;
+						TestTargetID = A95FFAF71982C67300CDBE54;
 					};
-					C419EF471982895E001161BF = {
+					A95FFB211982C9D500CDBE54 = {
 						CreatedOnToolsVersion = 6.0;
 					};
-					C419EF511982895E001161BF = {
+					A95FFB2B1982C9D500CDBE54 = {
 						CreatedOnToolsVersion = 6.0;
-						TestTargetID = C419EF471982895E001161BF;
+						TestTargetID = A95FFB211982C9D500CDBE54;
 					};
 				};
 			};
-			buildConfigurationList = C40959AA1978AE1D0009ED47 /* Build configuration list for PBXProject "Chatter" */;
+			buildConfigurationList = A95FFAF31982C67300CDBE54 /* Build configuration list for PBXProject "Chatter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -370,46 +341,45 @@
 				en,
 				Base,
 			);
-			mainGroup = C40959A61978AE1D0009ED47;
-			productRefGroup = C40959B01978AE1D0009ED47 /* Products */;
+			mainGroup = A95FFAEF1982C67300CDBE54;
+			productRefGroup = A95FFAF91982C67300CDBE54 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C40959AE1978AE1D0009ED47 /* Chatter */,
-				C40959C21978AE1D0009ED47 /* ChatterTests */,
-				C419EF471982895E001161BF /* ChatterLib */,
-				C419EF511982895E001161BF /* ChatterLibTests */,
+				A95FFAF71982C67300CDBE54 /* Chatter */,
+				A95FFB0C1982C67300CDBE54 /* ChatterTests */,
+				A95FFB211982C9D500CDBE54 /* ChatterLib */,
+				A95FFB2B1982C9D500CDBE54 /* ChatterLibTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C40959AD1978AE1D0009ED47 /* Resources */ = {
+		A95FFAF61982C67300CDBE54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40959D41978C1CD0009ED47 /* Submarine.aiff in Resources */,
-				A9519827198003CA00D5389D /* test_elsa.wav in Resources */,
-				C40959BB1978AE1D0009ED47 /* Images.xcassets in Resources */,
-				C40959BE1978AE1D0009ED47 /* Main.storyboard in Resources */,
+				A95FFB031982C67300CDBE54 /* Document.xib in Resources */,
+				A95FFB051982C67300CDBE54 /* Images.xcassets in Resources */,
+				A95FFB081982C67300CDBE54 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C40959C11978AE1D0009ED47 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C419EF461982895E001161BF /* Resources */ = {
+		A95FFB0B1982C67300CDBE54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C419EF501982895E001161BF /* Resources */ = {
+		A95FFB201982C9D500CDBE54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A95FFB2A1982C9D500CDBE54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,80 +389,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C40959AB1978AE1D0009ED47 /* Sources */ = {
+		A95FFAF41982C67300CDBE54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9EF0BB71980687100FABBD3 /* ViewController.swift in Sources */,
-				C40959B51978AE1D0009ED47 /* main.swift in Sources */,
-				C40959B91978AE1D0009ED47 /* Document.swift in Sources */,
+				A95FFB001982C67300CDBE54 /* Document.swift in Sources */,
+				A95FFAFE1982C67300CDBE54 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C40959BF1978AE1D0009ED47 /* Sources */ = {
+		A95FFB091982C67300CDBE54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40959CA1978AE1E0009ED47 /* ChatterTests.swift in Sources */,
+				A95FFB141982C67300CDBE54 /* ChatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C419EF431982895E001161BF /* Sources */ = {
+		A95FFB1D1982C9D500CDBE54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C419EF6C198289A6001161BF /* SPAssetReader.m in Sources */,
-				C419EF6D198289A6001161BF /* SPAudioGraphView.swift in Sources */,
-				C419EF6E198289A6001161BF /* SPURLAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C419EF4E1982895E001161BF /* Sources */ = {
+		A95FFB281982C9D500CDBE54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C419EF5A1982895E001161BF /* ChatterLibTests.swift in Sources */,
+				A95FFB341982C9D500CDBE54 /* ChatterLibTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C40959C51978AE1E0009ED47 /* PBXTargetDependency */ = {
+		A95FFB0F1982C67300CDBE54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C40959AE1978AE1D0009ED47 /* Chatter */;
-			targetProxy = C40959C41978AE1E0009ED47 /* PBXContainerItemProxy */;
+			target = A95FFAF71982C67300CDBE54 /* Chatter */;
+			targetProxy = A95FFB0E1982C67300CDBE54 /* PBXContainerItemProxy */;
 		};
-		C419EF551982895E001161BF /* PBXTargetDependency */ = {
+		A95FFB2F1982C9D500CDBE54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C419EF471982895E001161BF /* ChatterLib */;
-			targetProxy = C419EF541982895E001161BF /* PBXContainerItemProxy */;
+			target = A95FFB211982C9D500CDBE54 /* ChatterLib */;
+			targetProxy = A95FFB2E1982C9D500CDBE54 /* PBXContainerItemProxy */;
 		};
-		C419EF5C1982895E001161BF /* PBXTargetDependency */ = {
+		A95FFB361982C9D500CDBE54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C419EF471982895E001161BF /* ChatterLib */;
-			targetProxy = C419EF5B1982895E001161BF /* PBXContainerItemProxy */;
+			target = A95FFB211982C9D500CDBE54 /* ChatterLib */;
+			targetProxy = A95FFB351982C9D500CDBE54 /* PBXContainerItemProxy */;
 		};
-		C419EF601982895F001161BF /* PBXTargetDependency */ = {
+		A95FFB3A1982C9D500CDBE54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C419EF471982895E001161BF /* ChatterLib */;
-			targetProxy = C419EF5F1982895F001161BF /* PBXContainerItemProxy */;
+			target = A95FFB211982C9D500CDBE54 /* ChatterLib */;
+			targetProxy = A95FFB391982C9D500CDBE54 /* PBXContainerItemProxy */;
+		};
+		A95FFB431982C9D600CDBE54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A95FFB211982C9D500CDBE54 /* ChatterLib */;
+			targetProxy = A95FFB421982C9D600CDBE54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C40959BC1978AE1D0009ED47 /* Main.storyboard */ = {
+		A95FFB011982C67300CDBE54 /* Document.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C40959BD1978AE1D0009ED47 /* Base */,
+				A95FFB021982C67300CDBE54 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Document.xib;
+			sourceTree = "<group>";
+		};
+		A95FFB061982C67300CDBE54 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A95FFB071982C67300CDBE54 /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C40959CB1978AE1E0009ED47 /* Debug */ = {
+		A95FFB151982C67300CDBE54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -534,7 +513,7 @@
 			};
 			name = Debug;
 		};
-		C40959CC1978AE1E0009ED47 /* Release */ = {
+		A95FFB161982C67300CDBE54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -569,36 +548,29 @@
 			};
 			name = Release;
 		};
-		C40959CE1978AE1E0009ED47 /* Debug */ = {
+		A95FFB181982C67300CDBE54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Chatter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Chatter/Chatter-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		C40959CF1978AE1E0009ED47 /* Release */ = {
+		A95FFB191982C67300CDBE54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Chatter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Chatter/Chatter-Bridging-Header.h";
 			};
 			name = Release;
 		};
-		C40959D11978AE1E0009ED47 /* Debug */ = {
+		A95FFB1B1982C67300CDBE54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Chatter.app/Contents/MacOS/Chatter";
@@ -618,7 +590,7 @@
 			};
 			name = Debug;
 		};
-		C40959D21978AE1E0009ED47 /* Release */ = {
+		A95FFB1C1982C67300CDBE54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Chatter.app/Contents/MacOS/Chatter";
@@ -634,7 +606,7 @@
 			};
 			name = Release;
 		};
-		C419EF621982895F001161BF /* Debug */ = {
+		A95FFB3C1982C9D500CDBE54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -658,7 +630,7 @@
 			};
 			name = Debug;
 		};
-		C419EF631982895F001161BF /* Release */ = {
+		A95FFB3D1982C9D500CDBE54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -678,7 +650,7 @@
 			};
 			name = Release;
 		};
-		C419EF651982895F001161BF /* Debug */ = {
+		A95FFB401982C9D500CDBE54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -696,7 +668,7 @@
 			};
 			name = Debug;
 		};
-		C419EF661982895F001161BF /* Release */ = {
+		A95FFB411982C9D500CDBE54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -713,52 +685,48 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C40959AA1978AE1D0009ED47 /* Build configuration list for PBXProject "Chatter" */ = {
+		A95FFAF31982C67300CDBE54 /* Build configuration list for PBXProject "Chatter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C40959CB1978AE1E0009ED47 /* Debug */,
-				C40959CC1978AE1E0009ED47 /* Release */,
+				A95FFB151982C67300CDBE54 /* Debug */,
+				A95FFB161982C67300CDBE54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C40959CD1978AE1E0009ED47 /* Build configuration list for PBXNativeTarget "Chatter" */ = {
+		A95FFB171982C67300CDBE54 /* Build configuration list for PBXNativeTarget "Chatter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C40959CE1978AE1E0009ED47 /* Debug */,
-				C40959CF1978AE1E0009ED47 /* Release */,
+				A95FFB181982C67300CDBE54 /* Debug */,
+				A95FFB191982C67300CDBE54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		C40959D01978AE1E0009ED47 /* Build configuration list for PBXNativeTarget "ChatterTests" */ = {
+		A95FFB1A1982C67300CDBE54 /* Build configuration list for PBXNativeTarget "ChatterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C40959D11978AE1E0009ED47 /* Debug */,
-				C40959D21978AE1E0009ED47 /* Release */,
+				A95FFB1B1982C67300CDBE54 /* Debug */,
+				A95FFB1C1982C67300CDBE54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		C419EF611982895F001161BF /* Build configuration list for PBXNativeTarget "ChatterLib" */ = {
+		A95FFB3B1982C9D500CDBE54 /* Build configuration list for PBXNativeTarget "ChatterLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C419EF621982895F001161BF /* Debug */,
-				C419EF631982895F001161BF /* Release */,
+				A95FFB3C1982C9D500CDBE54 /* Debug */,
+				A95FFB3D1982C9D500CDBE54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		C419EF641982895F001161BF /* Build configuration list for PBXNativeTarget "ChatterLibTests" */ = {
+		A95FFB3F1982C9D500CDBE54 /* Build configuration list for PBXNativeTarget "ChatterLibTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C419EF651982895F001161BF /* Debug */,
-				C419EF661982895F001161BF /* Release */,
+				A95FFB401982C9D500CDBE54 /* Debug */,
+				A95FFB411982C9D500CDBE54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C40959A71978AE1D0009ED47 /* Project object */;
+	rootObject = A95FFAF01982C67300CDBE54 /* Project object */;
 }
