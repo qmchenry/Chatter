@@ -18,6 +18,11 @@
 		A95FFB341982C9D500CDBE54 /* ChatterLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB331982C9D500CDBE54 /* ChatterLibTests.swift */; };
 		A95FFB371982C9D500CDBE54 /* ChatterLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95FFB221982C9D500CDBE54 /* ChatterLib.framework */; };
 		A95FFB381982C9D500CDBE54 /* ChatterLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A95FFB221982C9D500CDBE54 /* ChatterLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A95FFB4A1982CA0B00CDBE54 /* SPAssetReader.h in Headers */ = {isa = PBXBuildFile; fileRef = A95FFB461982CA0B00CDBE54 /* SPAssetReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A95FFB4B1982CA0B00CDBE54 /* SPAssetReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB471982CA0B00CDBE54 /* SPAssetReader.m */; };
+		A95FFB4C1982CA0B00CDBE54 /* SPAudioGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB481982CA0B00CDBE54 /* SPAudioGraphView.swift */; };
+		A95FFB4D1982CA0B00CDBE54 /* SPURLAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB491982CA0B00CDBE54 /* SPURLAsset.swift */; };
+		A95FFB4F1982CB3B00CDBE54 /* test_vo.wav in Resources */ = {isa = PBXBuildFile; fileRef = A95FFB4E1982CB3B00CDBE54 /* test_vo.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,13 @@
 			remoteInfo = ChatterLib;
 		};
 		A95FFB421982C9D600CDBE54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A95FFB211982C9D500CDBE54;
+			remoteInfo = ChatterLib;
+		};
+		A95FFB441982C9D600CDBE54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A95FFAF01982C67300CDBE54 /* Project object */;
 			proxyType = 1;
@@ -89,6 +101,11 @@
 		A95FFB2C1982C9D500CDBE54 /* ChatterLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95FFB321982C9D500CDBE54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A95FFB331982C9D500CDBE54 /* ChatterLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterLibTests.swift; sourceTree = "<group>"; };
+		A95FFB461982CA0B00CDBE54 /* SPAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAssetReader.h; sourceTree = "<group>"; };
+		A95FFB471982CA0B00CDBE54 /* SPAssetReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAssetReader.m; sourceTree = "<group>"; };
+		A95FFB481982CA0B00CDBE54 /* SPAudioGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAudioGraphView.swift; sourceTree = "<group>"; };
+		A95FFB491982CA0B00CDBE54 /* SPURLAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPURLAsset.swift; sourceTree = "<group>"; };
+		A95FFB4E1982CB3B00CDBE54 /* test_vo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test_vo.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +171,7 @@
 				A95FFB011982C67300CDBE54 /* Document.xib */,
 				A95FFB041982C67300CDBE54 /* Images.xcassets */,
 				A95FFB061982C67300CDBE54 /* MainMenu.xib */,
+				A95FFB4E1982CB3B00CDBE54 /* test_vo.wav */,
 				A95FFAFB1982C67300CDBE54 /* Supporting Files */,
 			);
 			path = Chatter;
@@ -188,6 +206,10 @@
 		A95FFB231982C9D500CDBE54 /* ChatterLib */ = {
 			isa = PBXGroup;
 			children = (
+				A95FFB461982CA0B00CDBE54 /* SPAssetReader.h */,
+				A95FFB471982CA0B00CDBE54 /* SPAssetReader.m */,
+				A95FFB481982CA0B00CDBE54 /* SPAudioGraphView.swift */,
+				A95FFB491982CA0B00CDBE54 /* SPURLAsset.swift */,
 				A95FFB261982C9D500CDBE54 /* ChatterLib.h */,
 				A95FFB241982C9D500CDBE54 /* Supporting Files */,
 			);
@@ -227,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A95FFB271982C9D500CDBE54 /* ChatterLib.h in Headers */,
+				A95FFB4A1982CA0B00CDBE54 /* SPAssetReader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +325,7 @@
 			dependencies = (
 				A95FFB2F1982C9D500CDBE54 /* PBXTargetDependency */,
 				A95FFB431982C9D600CDBE54 /* PBXTargetDependency */,
+				A95FFB451982C9D600CDBE54 /* PBXTargetDependency */,
 			);
 			name = ChatterLibTests;
 			productName = ChatterLibTests;
@@ -360,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A95FFB031982C67300CDBE54 /* Document.xib in Resources */,
+				A95FFB4F1982CB3B00CDBE54 /* test_vo.wav in Resources */,
 				A95FFB051982C67300CDBE54 /* Images.xcassets in Resources */,
 				A95FFB081982C67300CDBE54 /* MainMenu.xib in Resources */,
 			);
@@ -410,6 +435,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95FFB4B1982CA0B00CDBE54 /* SPAssetReader.m in Sources */,
+				A95FFB4C1982CA0B00CDBE54 /* SPAudioGraphView.swift in Sources */,
+				A95FFB4D1982CA0B00CDBE54 /* SPURLAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +476,11 @@
 			isa = PBXTargetDependency;
 			target = A95FFB211982C9D500CDBE54 /* ChatterLib */;
 			targetProxy = A95FFB421982C9D600CDBE54 /* PBXContainerItemProxy */;
+		};
+		A95FFB451982C9D600CDBE54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A95FFB211982C9D500CDBE54 /* ChatterLib */;
+			targetProxy = A95FFB441982C9D600CDBE54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -555,6 +588,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Chatter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -566,6 +600,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Chatter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -623,7 +658,9 @@
 				INFOPLIST_FILE = ChatterLib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -643,7 +680,9 @@
 				INFOPLIST_FILE = ChatterLib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

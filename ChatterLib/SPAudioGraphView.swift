@@ -11,11 +11,12 @@ import ChatterLib
 
 public class SPAudioGraphView: NSView {
 
-    let frameRate = 12.0 // frames/sec
+    let frameRate = 24 // frames/sec
     
     var assetData: NSData?
     public var asset: AVURLAsset? {
         didSet {
+            SPAssetReader.setNoiseFloor(-50)
             assetData = SPAssetReader.dataFromAsset(asset, downsampleFactor: 200)
             self.setNeedsDisplayInRect(self.frame)
         }
@@ -46,16 +47,20 @@ public class SPAudioGraphView: NSView {
         bPath.stroke()
         
         // draw time hashes, one per frame
+        var hPath:NSBezierPath = NSBezierPath()
+        let hashColor = NSColor(red: 0.2, green: 0.5, blue: 0.2, alpha: 1.0)
+        hashColor.set()
         let yHalf = Int(frame.size.height/2 + frame.origin.y)
-        let hashCount: Double = assetDuration * frameRate
+        let hashCount: Double = assetDuration * Double(frameRate)
         let hashDist:Double = Double(frame.size.width) / hashCount
         var xHash = 0.0
         for (var i=0; i<=Int(hashCount); i++) {
-            bPath.moveToPoint(NSPoint(x:Int(xHash), y:yHalf+10))
-            bPath.lineToPoint(NSPoint(x:Int(xHash), y:yHalf-10))
-            bPath.stroke()
+            let hashHeight = (i % frameRate == 0 ? 20 : 6)
+            hPath.moveToPoint(NSPoint(x:Int(xHash), y:yHalf+hashHeight))
+            println("i=\(i)  i%frameRate=\(i%frameRate)")
+            hPath.lineToPoint(NSPoint(x:Int(xHash), y:yHalf-hashHeight))
+            hPath.stroke()
             xHash += hashDist
-            println("hash x \(xHash)")
         }
         
         let graphColor = NSColor(calibratedWhite: 0.4, alpha: 1.0)
@@ -69,7 +74,7 @@ public class SPAudioGraphView: NSView {
         gPath.lineWidth = 1.0
         gbPath.lineWidth = 1.0
         for (var i=0; i<count; i++) {
-            let value = Float(SPAssetReader.floatFromAssetData(assetData, index: i) + 50.0)
+            let value = Float(SPAssetReader.floatFromAssetData(assetData, index: i)) - Float(SPAssetReader.noiseFloor())
             let point = NSPoint(x: Int(x), y: Int(value*yScale) + yHalf )
             let pointB = NSPoint(x: Int(x), y: Int(-value*yScale) + yHalf )
             if (i==0) {
@@ -84,6 +89,7 @@ public class SPAudioGraphView: NSView {
             //            println("p\(i):\(point)")
             x += xScale
         }
+        println("noiseFloor = \(SPAssetReader.noiseFloor())")
     }
     
     override public func drawRect(dirtyRect: NSRect) {

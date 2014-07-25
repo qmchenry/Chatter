@@ -12,6 +12,8 @@
 
 @interface SPAssetReader : NSObject
 
++ (CGFloat)noiseFloor;
++ (void)setNoiseFloor:(CGFloat)newValue ;
 + (NSData *)dataFromAsset:(AVAsset *)asset downsampleFactor:(NSInteger)downsampleFactor;
 + (Float32) floatFromAssetData:(NSData*)assetData index:(NSInteger)index;
 + (NSInteger) countOfAssetData:(NSData *)assetData;

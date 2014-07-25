@@ -5,20 +5,37 @@
 //  Created by Quinn McHenry on 7/24/14.
 //  Copyright (c) 2014 Small Planet Digital. All rights reserved.
 //
+// extracted from   FDWaveformView
+//
+//  Created by William Entriken on 10/6/13.
+//  Copyright (c) 2013 William Entriken. All rights reserved.
+//
+// FROM http://stackoverflow.com/questions/5032775/drawing-waveform-with-avassetreader
+// AND http://stackoverflow.com/questions/8298610/waveform-on-ios
+// DO SEE http://stackoverflow.com/questions/1191868/uiimageview-scaling-interpolation
+// see http://stackoverflow.com/questions/3514066/how-to-tint-a-transparent-png-image-in-iphone
 
 #import "SPAssetReader.h"
 
 #define absX(x) (x<0?0-x:x)
 #define minMaxX(x,mn,mx) (x<=mn?mn:(x>=mx?mx:x))
-#define noiseFloor (-50.0)
 #define decibel(amplitude) (20.0 * log10(absX(amplitude)/32767.0))
 
 
 @import AVFoundation;
 @import CoreMedia;
 
+static CGFloat noiseFloor = -50.0;
 
 @implementation SPAssetReader
+
++ (CGFloat)noiseFloor {
+    return noiseFloor;
+}
+
++ (void)setNoiseFloor:(CGFloat)newValue {
+    noiseFloor = newValue;
+}
 
 + (NSData *)dataFromAsset:(AVAsset *)asset downsampleFactor:(NSInteger)downsampleFactor {
     NSError *error = nil;
