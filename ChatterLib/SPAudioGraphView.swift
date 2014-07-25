@@ -24,8 +24,9 @@ public class SPAudioGraphView: NSView {
     public var assetDuration: Double {
         var duration = 0.0
         if (asset) {
-            duration = Double(asset!.duration.value) / Double(asset!.duration.value)
+            duration = Double(asset!.duration.value) / Double(asset!.duration.timescale)
         }
+            println("duration = \(duration)  a.d=\(asset!.duration.value)  a.t=\(asset!.duration.timescale)")
         return duration;
     }
     
@@ -45,7 +46,17 @@ public class SPAudioGraphView: NSView {
         bPath.stroke()
         
         // draw time hashes, one per frame
-        let hashCount = assetDuration * frameRate
+        let yHalf = Int(frame.size.height/2 + frame.origin.y)
+        let hashCount: Double = assetDuration * frameRate
+        let hashDist:Double = Double(frame.size.width) / hashCount
+        var xHash = 0.0
+        for (var i=0; i<=Int(hashCount); i++) {
+            bPath.moveToPoint(NSPoint(x:Int(xHash), y:yHalf+10))
+            bPath.lineToPoint(NSPoint(x:Int(xHash), y:yHalf-10))
+            bPath.stroke()
+            xHash += hashDist
+            println("hash x \(xHash)")
+        }
         
         let graphColor = NSColor(calibratedWhite: 0.4, alpha: 1.0)
         graphColor.set()
@@ -53,7 +64,6 @@ public class SPAudioGraphView: NSView {
         var x: Float = 0.0
         let xScale = Float(frame.size.width) / Float(count)
         let yScale = Float((frame.size.height-50.0)/100.0)
-        let yHalf = Int(frame.size.height/2 + frame.origin.y)
         var gPath = NSBezierPath()
         var gbPath = NSBezierPath()
         gPath.lineWidth = 1.0
