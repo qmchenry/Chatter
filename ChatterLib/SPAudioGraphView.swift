@@ -11,12 +11,22 @@ import ChatterLib
 
 public class SPAudioGraphView: NSView {
 
+    let frameRate = 12.0 // frames/sec
+    
     var assetData: NSData?
     public var asset: AVURLAsset? {
         didSet {
             assetData = SPAssetReader.dataFromAsset(asset, downsampleFactor: 200)
             self.setNeedsDisplayInRect(self.frame)
         }
+    }
+    
+    public var assetDuration: Double {
+        var duration = 0.0
+        if (asset) {
+            duration = Double(asset!.duration.value) / Double(asset!.duration.value)
+        }
+        return duration;
     }
     
     init(frame: NSRect) {
@@ -33,6 +43,9 @@ public class SPAudioGraphView: NSView {
         bPath.moveToPoint(NSPoint(x: 0, y: frame.size.height/2))
         bPath.lineToPoint(NSPoint(x: frame.size.width, y: frame.size.height/2))
         bPath.stroke()
+        
+        // draw time hashes, one per frame
+        let hashCount = assetDuration * frameRate
         
         let graphColor = NSColor(calibratedWhite: 0.4, alpha: 1.0)
         graphColor.set()
