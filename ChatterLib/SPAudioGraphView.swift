@@ -15,7 +15,7 @@ public class SPAudioGraphView: NSView {
     let downsampleFactor = 200
     
     var assetData: NSData?
-    var dataPoints: Array<(time:Double, value:Float)> = []
+    public var dataPoints: Array<(time:Double, value:Float)> = []
     public var asset: AVURLAsset? {
         didSet {
             SPAssetReader.setNoiseFloor(-50)

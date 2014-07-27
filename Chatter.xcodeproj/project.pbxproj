@@ -257,13 +257,13 @@
 		A95FFB231982C9D500CDBE54 /* ChatterLib */ = {
 			isa = PBXGroup;
 			children = (
+				C42E32B41983DE5C00C98257 /* FrameAnimation.swift */,
 				A95FFB461982CA0B00CDBE54 /* SPAssetReader.h */,
 				A95FFB471982CA0B00CDBE54 /* SPAssetReader.m */,
 				A95FFB481982CA0B00CDBE54 /* SPAudioGraphView.swift */,
 				A95FFB491982CA0B00CDBE54 /* SPURLAsset.swift */,
 				A95FFB261982C9D500CDBE54 /* ChatterLib.h */,
 				A95FFB241982C9D500CDBE54 /* Supporting Files */,
-				C42E32B41983DE5C00C98257 /* FrameAnimation.swift */,
 			);
 			path = ChatterLib;
 			sourceTree = "<group>";

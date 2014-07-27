@@ -9,15 +9,57 @@
 import Cocoa
 
 public class FrameAnimation {
-    public var firstFrame: Int = 0
-    public var frameSets: [[Int]] = [[13,13,13,14,15,16,17,16,15,14,13,13,13,18,19,20,19,18],[14,15,16,17,16,15,14],[18,19,20,19,18]]
+    public var firstFrame: Int = 13
+    public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]]
     public var currentFrameSetIndex = 0
     public var filenameBase = "el_home_region00_"
     public var filenameExtension = ".png"
     public var digits = 4
+    var currentFrameIndex = 0
+    public var frames: [Int] = []   // designed frames
     
-    public init() {
-        
+    public func buildFrames(data: Array<(time:Double, value:Float)>) {
+        frames.removeAll(keepCapacity: true)
+        var up = true
+        var index = 0
+        for (time, value) in data {
+            if (value < -40) {
+                frames += firstFrame
+            } else {
+                if (up) {
+                    if (index+1 >= frameSets[currentFrameSetIndex].count) {
+                        up = false
+                        index--
+                    } else {
+                        index++
+                    }
+                } else {
+                    if (index-1 <= 0) {
+                        up = true
+                        index++
+                    } else {
+                        index--
+                    }
+                }
+                frames += frameSets[currentFrameSetIndex][index]
+            }
+        }
+        println("frames = \(frames)")
+    }
+    
+    public func reset() {
+        currentFrameIndex = 0
+    }
+    
+    public func nextFrame() -> String? {
+        if (currentFrameIndex >= frames.count) {
+            return nil
+        }
+        return filename(frames[currentFrameIndex++])
+    }
+    
+    public func hasNextFrame() -> Bool {
+        return currentFrameIndex < frames.count
     }
     
     public func filename(frameIndex: Int) -> String {
@@ -41,4 +83,9 @@ public class FrameAnimation {
     public func framesetFilename(index: Int) -> String {
         return filename(frameSets[currentFrameSetIndex][index%count()])
     }
+    
+    public init() {
+        
+    }
+
 }
