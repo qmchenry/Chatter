@@ -31,23 +31,21 @@ class Document: NSDocument {
         state = .playing
     }
     
-    
-    init() {
-        super.init()
-        // Add your subclass-specific initialization here.
-                                    
+    func setAssetFileURL(fileURL: NSURL) {
+        currentAsset = AVURLAsset(URL: fileURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
+        player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
+        graphView!.asset = currentAsset
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy:.FirstSetUpDown)
     }
-
+    
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
                                     
         // Add any code here that needs to be executed once the windowController has loaded the document's window.
         
-        let fileUrl = NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav")
-        currentAsset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
-        player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
-        graphView!.asset = currentAsset
-        frameAnimation.buildFrames(graphView.dataPoints)
+        let fileURL = NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav")
+        setAssetFileURL(fileURL)
+        imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/24.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
 
     }
@@ -87,7 +85,11 @@ class Document: NSDocument {
         outError.memory = NSError.errorWithDomain(NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         return false
     }
-
+    
+    init() {
+        super.init()
+        // Add your subclass-specific initialization here.
+    }
 
 }
 

@@ -8,6 +8,10 @@
 
 import Cocoa
 
+public enum FrameAnimationStrategy: String {
+    case FirstSetUpDown = "First set, up/down"
+}
+
 public class FrameAnimation {
     public var firstFrame: Int = 13
     public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]]
@@ -18,7 +22,7 @@ public class FrameAnimation {
     var currentFrameIndex = 0
     public var frames: [Int] = []   // designed frames
     
-    public func buildFrames(data: Array<(time:Double, value:Float)>) {
+    public func buildFrames(data: Array<(time:Double, value:Float)>, withStrategy strategy:FrameAnimationStrategy = .FirstSetUpDown) {
         frames.removeAll(keepCapacity: true)
         var up = true
         var index = 0

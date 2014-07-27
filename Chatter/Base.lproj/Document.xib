@@ -82,7 +82,7 @@
             <toolbar key="toolbar" implicitIdentifier="8482A90E-529A-46AE-BFAE-F4A2B3019709" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="6Lp-6Y-wI1">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="qu6-0D-T5L"/>
-                    <toolbarItem implicitItemIdentifier="4506E58A-3168-472A-8B42-EF88931344AB" label="Play" paletteLabel="Play" tag="-1" image="el_home_region00_0000" id="kG5-dC-hda">
+                    <toolbarItem implicitItemIdentifier="4506E58A-3168-472A-8B42-EF88931344AB" label="Play" paletteLabel="Play" tag="-1" image="play-icon" id="kG5-dC-hda">
                         <connections>
                             <action selector="play:" target="-2" id="007-In-Uaf"/>
                         </connections>
@@ -102,6 +102,6 @@
         </window>
     </objects>
     <resources>
-        <image name="el_home_region00_0000" width="224" height="230"/>
+        <image name="play-icon" width="100.08000183105469" height="100.08000183105469"/>
     </resources>
 </document>
