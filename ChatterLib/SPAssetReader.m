@@ -118,8 +118,10 @@ static CGFloat noiseFloor = -50.0;
 }
 
 + (Float32) floatFromAssetData:(NSData*)assetData index:(NSInteger)index {
-    Float32 value;
-    [assetData getBytes:&value range:NSMakeRange(index*sizeof(Float32), sizeof(Float32))];
+    Float32 value = noiseFloor;
+    if (index*sizeof(Float32) < assetData.length) {
+        [assetData getBytes:&value range:NSMakeRange(index*sizeof(Float32), sizeof(Float32))];
+    }
     return value;
 }
 

@@ -12,26 +12,26 @@ import ChatterLib
 public class SPAudioGraphView: NSView {
 
     let frameRate = 24 // frames/sec
+    let downsampleFactor = 200
     
     var assetData: NSData?
-    var dataPoints: Array<(time:Double, value:Double)> = []
+    var dataPoints: Array<(time:Double, value:Float)> = []
     public var asset: AVURLAsset? {
         didSet {
             SPAssetReader.setNoiseFloor(-50)
-            assetData = SPAssetReader.dataFromAsset(asset, downsampleFactor: 200)
+            assetData = SPAssetReader.dataFromAsset(asset, downsampleFactor: downsampleFactor)
             
             dataPoints.removeAll(keepCapacity: true)
-            let maxFrame = Int(frameCount())
-            let delta = Double(SPAssetReader.countOfAssetData(assetData)/maxFrame)
-            let frames = Int(frameCount())
+            let desiredFrames = Int(frameCount())
+            let totalFrames = Int(asset!.duration.value) / downsampleFactor
+            let delta = Double(SPAssetReader.countOfAssetData(assetData)/desiredFrames)
             var timeIndex = 0.0
-            for (var i=0; i<frames; i++) {
-                let index:Int = i * Int(Double(maxFrame) / frameCount())
-                println("i:\(i)  index:\(index)  timeIndex:\(timeIndex)  ")
-                dataPoints += (timeIndex, Double(SPAssetReader.floatFromAssetData(assetData, index: index)))
+            for (var i=0; i<desiredFrames; i++) {
+                let index:Int = i * Int(totalFrames / desiredFrames)
+                let value = SPAssetReader.floatFromAssetData(assetData, index: index)
+                dataPoints += (timeIndex, value)
                 timeIndex += assetDuration / frameCount()
             }
-            println("dataPoints = \(dataPoints)")
             self.setNeedsDisplayInRect(self.frame)
         }
     }
@@ -41,7 +41,6 @@ public class SPAudioGraphView: NSView {
         if (asset) {
             duration = Double(asset!.duration.value) / Double(asset!.duration.timescale)
         }
-            println("duration = \(duration)  a.d=\(asset!.duration.value)  a.t=\(asset!.duration.timescale)")
         return duration;
     }
     
@@ -55,14 +54,11 @@ public class SPAudioGraphView: NSView {
     }
     
     func drawCircleAtPoint(point: NSPoint) {
-        println("drawCircleAtPoint: \(point)")
-        let radius = 5;
+        let radius = 4;
         let point = NSPoint(x: point.x - radius, y: point.y - radius)
         let size = NSSize(width: radius*2, height: radius*2)
         let rect = NSRect(origin: NSPointToCGPoint(point), size: NSSizeToCGSize(size))
         let bPath = NSBezierPath(ovalInRect: rect)
-        let color = NSColor(red: 0.1, green: 0.1, blue: 0.8, alpha: 1.0)
-        color.set()
         bPath.stroke()
         bPath.fill()
     }
@@ -94,12 +90,12 @@ public class SPAudioGraphView: NSView {
         let yScale = Float((frame.size.height-50.0)/100.0)
 
         for (var i=0; i<Int(hashCount); i++) {
-            let hashHeight = (i % frameRate == 0 ? 20 : 6)
+            let hashHeight = (i % frameRate == 0 ? 22 : 8)
             hPath.moveToPoint(NSPoint(x:Int(xHash), y:yHalf+hashHeight))
             hPath.lineToPoint(NSPoint(x:Int(xHash), y:yHalf-hashHeight))
             hPath.stroke()
             let (timeIndex, dataValue) = dataPoints[i]
-            let y = Float(dataValue) * yScale
+            let y = (Float(dataValue)-Float(SPAssetReader.noiseFloor())) * yScale
             let point = NSPoint(x:Int(xHash), y:Int(y) + yHalf)
             drawCircleAtPoint(point)
             xHash += hashDist
@@ -127,7 +123,6 @@ public class SPAudioGraphView: NSView {
             //            println("p\(i):\(point)")
             x += xScale
         }
-        println("noiseFloor = \(SPAssetReader.noiseFloor())")
     }
     
     override public func drawRect(dirtyRect: NSRect) {

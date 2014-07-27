@@ -8,12 +8,22 @@
 
 import Cocoa
 import Foundation
+import CoreMedia
 import ChatterLib
 
 class Document: NSDocument {
                             
+    @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var graphView: SPAudioGraphView!
     var currentAsset: AVURLAsset?
+    var player: AVPlayer?
+    var frameAnimation = FrameAnimation()
+    
+    @IBAction func play(sender: AnyObject) {
+        player?.seekToTime(CMTimeMake(0,currentAsset!.duration.timescale))
+        player?.play()
+    }
+    
     
     init() {
         super.init()
@@ -28,8 +38,15 @@ class Document: NSDocument {
         
         let fileUrl = NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav")
         currentAsset = AVURLAsset(URL: fileUrl, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
+        player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
         graphView!.asset = currentAsset
-        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/24.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+
+    }
+    
+    var currentIndex = 0
+    func update() {
+        imageView!.image = NSImage(named: frameAnimation.framesetFilename(currentIndex++))
     }
 
     override class func autosavesInPlace() -> Bool {
