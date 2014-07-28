@@ -20,20 +20,23 @@ class Document: NSDocument {
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var graphView: SPAudioGraphView!
     var currentAsset: AVURLAsset?
-    var player: AVPlayer?
+    var player: AVAudioPlayer?
     var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
     
     @IBAction func play(sender: AnyObject) {
         frameAnimation.reset()
-        player?.seekToTime(CMTimeMake(0,currentAsset!.duration.timescale))
+        player!.currentTime = 0.0
         player?.play()
         state = .playing
     }
     
     func setAssetFileURL(fileURL: NSURL) {
         currentAsset = AVURLAsset(URL: fileURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
-        player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
+        player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        player!.prepareToPlay()
+//        player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
+        
         graphView!.asset = currentAsset
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
     }
