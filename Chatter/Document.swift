@@ -40,11 +40,9 @@ class Document: NSDocument {
     
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
-                                    
-        // Add any code here that needs to be executed once the windowController has loaded the document's window.
         
-        let fileURL = NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav")
-        setAssetFileURL(fileURL)
+//        setAssetFileURL(NSBundle.mainBundle().URLForResource("sw900yrs", withExtension: "wav"))
+        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/24.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
 

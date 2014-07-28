@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Small Planet. All rights reserved.
 //
 
+/* Strategy thoughts
+Depending on the final framerate (if high enough), a perceptual trick of animating the frame one data point in advance might make the visual perception (slower) match better with audio perception. This would also allow a 0 first value that quickly ascends to have an active mouth position immediately
+*/
+
 import Cocoa
 
 public enum FrameAnimationStrategy: String {
@@ -22,32 +26,38 @@ public class FrameAnimation {
     var currentFrameIndex = 0
     public var frames: [Int] = []   // designed frames
     
+    
+    
     public func buildFrames(data: Array<(time:Double, value:Float)>, withStrategy strategy:FrameAnimationStrategy = .FirstSetUpDown) {
-        frames.removeAll(keepCapacity: true)
-        var up = true
-        var index = 0
-        for (time, value) in data {
-            if (value < -40) {
-                frames += firstFrame
-            } else {
-                if (up) {
-                    if (index+1 >= frameSets[currentFrameSetIndex].count) {
-                        up = false
-                        index--
-                    } else {
-                        index++
-                    }
+        
+        // normalize data
+        let normalized = normalize(data)
+        
+        switch strategy {
+            
+        case .FirstSetUpDown:
+            frames.removeAll(keepCapacity: true)
+            var up = true
+            var index = 0
+            for value in normalized {
+                if (value < 0.1) {
+                    frames += firstFrame
                 } else {
-                    if (index-1 <= 0) {
-                        up = true
-                        index++
+                    if (up) {
+                        if (index+1 >= frameSets[currentFrameSetIndex].count) {
+                            up = false
+                        }
                     } else {
-                        index--
+                        if (index-1 <= 0) {
+                            up = true
+                        }
                     }
+                    index += up ? 1 : -1
+                    frames += frameSets[currentFrameSetIndex][index]
                 }
-                frames += frameSets[currentFrameSetIndex][index]
-            }
-        }
+            } // case .FirstSetUpDown
+            
+        } // switch
         println("frames = \(frames)")
     }
     
@@ -90,6 +100,17 @@ public class FrameAnimation {
     
     public init() {
         
+    }
+    
+    func normalize(data: Array<(time:Double, value:Float)>) -> [Float] {
+        let max = data.sorted{$0.value > $1.value}[0].value
+        let min:Float = Float(SPAssetReader.noiseFloor())
+        let scale:Float = 1.0/(max-min)
+        var normalized = [Float]()
+        for (time,value) in data {
+            normalized += (value-min)*scale
+        }
+        return normalized
     }
 
 }
