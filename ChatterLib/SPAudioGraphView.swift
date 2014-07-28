@@ -11,7 +11,7 @@ import ChatterLib
 
 public class SPAudioGraphView: NSView {
 
-    let frameRate = 24 // frames/sec
+    let frameRate = 16 // frames/sec
     let downsampleFactor = 200
     
     var assetData: NSData?

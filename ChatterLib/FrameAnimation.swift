@@ -14,13 +14,22 @@ import Cocoa
 
 public enum FrameAnimationStrategy: String {
     case FirstSetUpDown = "First set, up/down"
+    case BothSetsUpDown = "Both sets, up/down"
+    case CurrentValue = "Based on current value"
+    case both = "Both sets and current value"
+    //case upDownPartial = "Not all the way down or up"
+    //random?
 }
 
 public class FrameAnimation {
-    public var firstFrame: Int = 13
-    public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]]
+    //public var firstFrame: Int = 13
+    public var firstFrame: Int = 0 //rapunzel
+    public var OtherFirstFrame: Int = 18
+    //public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]]
+    public var frameSets: [[Int]] = [[14,15,16],[17,18,19,20]] //rapunzel
     public var currentFrameSetIndex = 0
-    public var filenameBase = "el_home_region00_"
+    //public var filenameBase = "el_home_region00_"
+    public var filenameBase = "ra_homeregion00_" //rapunzel
     public var filenameExtension = ".png"
     public var digits = 4
     var currentFrameIndex = 0
@@ -28,7 +37,7 @@ public class FrameAnimation {
     
     
     
-    public func buildFrames(data: Array<(time:Double, value:Float)>, withStrategy strategy:FrameAnimationStrategy = .FirstSetUpDown) {
+    public func buildFrames(data: Array<(time:Double, value:Float)>, withStrategy strategy:FrameAnimationStrategy = .CurrentValue) {
         
         // normalize data
         let normalized = normalize(data)
@@ -56,6 +65,59 @@ public class FrameAnimation {
                     frames += frameSets[currentFrameSetIndex][index]
                 }
             } // case .FirstSetUpDown
+            
+        case .BothSetsUpDown:
+            frames.removeAll(keepCapacity: true)
+            var up = true
+            var WhichSet = false //false for first set, true for second set
+            var index = 0
+            for value in normalized {
+                if (value < 0.1) {
+                    frames += firstFrame
+                }
+                else {
+                    if (up) {
+                        if (index+1 >= frameSets[currentFrameSetIndex].count) {
+                            up = false
+                            WhichSet = true
+                        }
+                    }
+                    else {
+                        if (index-1 <= 0) {
+                            up = true
+                            WhichSet = false
+                        }
+                    }
+                    index = WhichSet ? OtherFirstFrame : firstFrame
+                    index += up ? 1 : -1
+                    frames += frameSets[currentFrameSetIndex][index]
+                }
+            } // case .BothSetsUpDown
+            
+        case .CurrentValue:
+            frames.removeAll(keepCapacity: true)
+            var tempFrames = [firstFrame]
+            tempFrames += frameSets[0] //[13,14,15,16,17]
+            for value in normalized {
+                let index = Int(value*Float(tempFrames.count-1))
+                frames += tempFrames[index]
+            }// case .CurrentValue
+            
+        case .both:
+            frames.removeAll(keepCapacity: true)
+            frames.removeAll(keepCapacity: true)
+            var tempFrames = [firstFrame]
+            tempFrames += frameSets[0] //[13,14,15,16,17]
+            var whichSet = 0
+            for value in normalized {
+                if random() % 100 < 10 {
+                    whichSet = 1 - whichSet
+                    tempFrames = [firstFrame] + frameSets[whichSet]
+                }
+                let index = Int(value*Float(tempFrames.count-1))
+                frames += tempFrames[index]
+                
+            }// case .both
             
         } // switch
         println("frames = \(frames)")

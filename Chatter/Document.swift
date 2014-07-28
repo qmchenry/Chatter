@@ -35,16 +35,20 @@ class Document: NSDocument {
         currentAsset = AVURLAsset(URL: fileURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
         player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
         graphView!.asset = currentAsset
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy:.FirstSetUpDown)
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
     }
     
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("sw900yrs", withExtension: "wav"))
-        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
+//        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
+//       setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_016-120_anna", withExtension: "wav"))
+        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-530_anna", withExtension: "wav"))
+//        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_025-540_elsa", withExtension: "wav"))
+//        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-520_elsa", withExtension: "wav"))
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
-        var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/24.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/16.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
 
     }
     
