@@ -15,7 +15,7 @@ enum PlaybackState {
     case idle, playing
 }
 
-class Document: NSDocument {
+class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
                             
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var graphView: SPAudioGraphView!
@@ -23,6 +23,7 @@ class Document: NSDocument {
     var player: AVAudioPlayer?
     var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
+    var audioFiles = ["test_vo","dx_frzn_016-120_anna","dx_frzn_017-530_anna","dx_frzn_025-540_elsa","dx_frzn_017-520_elsa"]
     
     @IBAction func play(sender: AnyObject) {
         frameAnimation.reset()
@@ -35,7 +36,6 @@ class Document: NSDocument {
         currentAsset = AVURLAsset(URL: fileURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
         player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
         player!.prepareToPlay()
-//        player = AVPlayer(playerItem: AVPlayerItem(asset: currentAsset))
         
         graphView!.asset = currentAsset
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
@@ -66,6 +66,53 @@ class Document: NSDocument {
         }
     }
 
+// NSOutlineViewDataSource
+    
+    
+    func outlineView(outlineView: NSOutlineView!, numberOfChildrenOfItem item: AnyObject!) -> Int {
+        return audioFiles.count
+//        return !item ? 1 : audioFiles.count
+    }
+    
+    func outlineView(outlineView: NSOutlineView!, child index: Int, ofItem item: AnyObject!) -> AnyObject! {
+        return audioFiles[index]
+//        return !item ? "Audio files" : audioFiles[index]
+    }
+    
+    func outlineView(outlineView: NSOutlineView!, isItemExpandable item: AnyObject!) -> Bool {
+        return false
+    }
+    
+
+// NSOutlineViewDelegate
+
+    func outlineView(outlineView: NSOutlineView!, dataCellForTableColumn tableColumn: NSTableColumn!, item: AnyObject!) -> NSCell! {
+        println("item = \(item)")
+        let text = item as String!
+        return NSCell(textCell: text)
+    }
+    
+    func outlineView(outlineView: NSOutlineView!, shouldShowOutlineCellForItem item: AnyObject!) -> Bool  {
+        return true
+    }
+    
+    func outlineView(outlineView: NSOutlineView!, viewForTableColumn tableColumn: NSTableColumn!, item: AnyObject!) -> NSView! {
+        var result = outlineView.makeViewWithIdentifier("DataCell", owner: self) as NSTableCellView
+        let string = item as String
+        result.textField.stringValue = string
+        return result
+    }
+
+    func outlineViewSelectionDidChange(notification: NSNotification!) {
+        println("didChange \(notification)")
+        let outlineView = notification!.object as NSOutlineView
+        let selectedRow = outlineView.selectedRow
+        setAssetFileURL(NSBundle.mainBundle().URLForResource(audioFiles[selectedRow], withExtension: "wav"))
+    }
+    
+// NSDocument
+    
+    
     override class func autosavesInPlace() -> Bool {
         return true
     }
