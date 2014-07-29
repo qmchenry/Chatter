@@ -39,7 +39,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         player!.prepareToPlay()
         
         graphView!.asset = currentAsset
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .lessRandom)
         sequenceLabel!.stringValue = frameAnimation.printSequence()
     }
     

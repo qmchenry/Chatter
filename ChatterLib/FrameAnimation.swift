@@ -22,19 +22,19 @@ public enum FrameAnimationStrategy: String {
 }
 
 public class FrameAnimation {
-    //public var firstFrame: Int = 13 //elsa, belle
+    public var firstFrame: Int = 13 //elsa, belle
     //public var firstFrame: Int = 0 //rapunzel, merida
-    public var firstFrame: Int = 12 //jasmine
-    //public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]] //elsa, belle
+    //public var firstFrame: Int = 12 //jasmine
+    public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]] //elsa, belle
     //public var frameSets: [[Int]] = [[14,15,16],[17,18,19,20]] //rapunzel
     //public var frameSets: [[Int]] = [[14,15,16],[17,18,19]] //merida
-    public var frameSets: [[Int]] = [[13,14,15],[16,17]] //jasmine
+    //public var frameSets: [[Int]] = [[13,14,15],[16,17]] //jasmine
     public var currentFrameSetIndex = 0
-    //public var filenameBase = "el_home_region00_" //elsa
+    public var filenameBase = "el_home_region00_" //elsa
     //public var filenameBase = "ra_homeregion00_" //rapunzel
     //public var filenameBase = "be_home_region00_" //belle
     //public var filenameBase = "me_home_region00_" //merida
-    public var filenameBase = "ja_home_region00_" //jasmine
+    //public var filenameBase = "ja_home_region00_" //jasmine
     public var filenameExtension = ".png"
     public var digits = 4
     var currentFrameIndex = 0
@@ -138,7 +138,8 @@ public class FrameAnimation {
                 
                 let index = Int(value*Float(tempFrames.count-1))
                 frames += tempFrames[index]
-
+            // a strategy attempting to switch sets based on the number of times there's no sound
+            //... but ends up looking kind of crazy
             }// case .Count
             
         case .lessRandom:
@@ -148,23 +149,16 @@ public class FrameAnimation {
             var rand = 0
             for value in normalized {
                 while rand <= 4 {
+                    ++rand
                     if rand == 1 {
                         whichSet = 1 - whichSet
                         tempFrames = [firstFrame] + frameSets[whichSet] //[13,18,19,20]
-                        let index = Int(value*Float(tempFrames.count-1))
-                        frames += tempFrames[index]
-                        rand++
-                    }
-                    else if rand == 4 {
-                        rand--
-                    }
-                    else {
-                        rand++
-                        let index = Int(value*Float(tempFrames.count-1))
-                        frames += tempFrames[index]
                     }
                 }
-                
+                let index = Int(value*Float(tempFrames.count-1))
+                frames += tempFrames[index]
+            // a strategy trying to be less random than .both
+            // but it ends up only using the second set of frames hmmm
             }// case .lessRandom
             
         } // switch
