@@ -165,6 +165,14 @@ public class FrameAnimation {
         println("frames = \(frames)")
     }
     
+    public func printSequence() -> String {
+        var seq = "frames : ["
+        for i in frames {
+            seq += String(i) + ","
+        }
+        return seq + "]"
+    }
+    
     public func reset() {
         currentFrameIndex = 0
     }

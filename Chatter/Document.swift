@@ -19,6 +19,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
                             
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var graphView: SPAudioGraphView!
+    @IBOutlet weak var sequenceLabel: NSTextFieldCell!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     var frameAnimation = FrameAnimation()
@@ -38,7 +39,8 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         player!.prepareToPlay()
         
         graphView!.asset = currentAsset
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .lessRandom)
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
+        sequenceLabel!.stringValue = frameAnimation.printSequence()
     }
     
     override func windowControllerDidLoadNib(aController: NSWindowController) {
