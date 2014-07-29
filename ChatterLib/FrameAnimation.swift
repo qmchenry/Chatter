@@ -17,19 +17,18 @@ public enum FrameAnimationStrategy: String {
     case BothSetsUpDown = "Both sets, up/down"
     case CurrentValue = "Based on current value"
     case both = "Both sets and current value"
-    //case upDownPartial = "Not all the way down or up"
-    //random?
+    case Count = "Counts the number of times there's no sound"
+    case lessRandom = "like both but not random"
 }
 
 public class FrameAnimation {
-    //public var firstFrame: Int = 13
-    public var firstFrame: Int = 0 //rapunzel
-    public var OtherFirstFrame: Int = 18
-    //public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]]
-    public var frameSets: [[Int]] = [[14,15,16],[17,18,19,20]] //rapunzel
+    public var firstFrame: Int = 13
+    //public var firstFrame: Int = 0 //rapunzel
+    public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]]
+    //public var frameSets: [[Int]] = [[14,15,16],[17,18,19,20]] //rapunzel
     public var currentFrameSetIndex = 0
-    //public var filenameBase = "el_home_region00_"
-    public var filenameBase = "ra_homeregion00_" //rapunzel
+    public var filenameBase = "el_home_region00_"
+    //public var filenameBase = "ra_homeregion00_" //rapunzel
     public var filenameExtension = ".png"
     public var digits = 4
     var currentFrameIndex = 0
@@ -88,7 +87,7 @@ public class FrameAnimation {
                             WhichSet = false
                         }
                     }
-                    index = WhichSet ? OtherFirstFrame : firstFrame
+                    //index = WhichSet ? OtherFirstFrame : firstFrame
                     index += up ? 1 : -1
                     frames += frameSets[currentFrameSetIndex][index]
                 }
@@ -105,19 +104,62 @@ public class FrameAnimation {
             
         case .both:
             frames.removeAll(keepCapacity: true)
-            frames.removeAll(keepCapacity: true)
-            var tempFrames = [firstFrame]
-            tempFrames += frameSets[0] //[13,14,15,16,17]
+            var tempFrames = [firstFrame] + frameSets[0] //[13,14,15,16,17]
             var whichSet = 0
             for value in normalized {
                 if random() % 100 < 10 {
                     whichSet = 1 - whichSet
-                    tempFrames = [firstFrame] + frameSets[whichSet]
+                    tempFrames = [firstFrame] + frameSets[whichSet] //[13,18,19,20]
                 }
                 let index = Int(value*Float(tempFrames.count-1))
                 frames += tempFrames[index]
                 
             }// case .both
+            
+        case .Count:
+            frames.removeAll(keepCapacity: true)
+            var tempFrames = [firstFrame] + frameSets[0] //[13,14,15,16,17]
+            var whichSet = 0
+            var count = 0 //counts the number of times there's no sound
+            for value in normalized {
+                if (value <= 0.1) {
+                    count++
+                }
+                else if (count >= 4) {
+                    whichSet = 1 - whichSet
+                    tempFrames = [firstFrame] + frameSets[whichSet] //[13,18,19,20]
+                }
+                
+                let index = Int(value*Float(tempFrames.count-1))
+                frames += tempFrames[index]
+
+            }// case .Count
+            
+        case .lessRandom:
+            frames.removeAll(keepCapacity: true)
+            var tempFrames = [firstFrame] + frameSets[0] //[13,14,15,16,17]
+            var whichSet = 0
+            var rand = 0
+            for value in normalized {
+                while rand <= 4 {
+                    if rand == 1 {
+                        whichSet = 1 - whichSet
+                        tempFrames = [firstFrame] + frameSets[whichSet] //[13,18,19,20]
+                        let index = Int(value*Float(tempFrames.count-1))
+                        frames += tempFrames[index]
+                        rand++
+                    }
+                    else if rand == 4 {
+                        rand--
+                    }
+                    else {
+                        rand++
+                        let index = Int(value*Float(tempFrames.count-1))
+                        frames += tempFrames[index]
+                    }
+                }
+                
+            }// case .lessRandom
             
         } // switch
         println("frames = \(frames)")
