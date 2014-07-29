@@ -1,0 +1,5 @@
+<Image bounds="0,0,507,680" urlPath="bundle://ja_home_base.png">
+	<Image bounds="148,469,233,205" urlPath="bundle://ja_home_region00_0000.png">
+		<FrameAnimation framerate="12" sequence="0-2,0*4,1,3,4*6,1,5,6*8,7-9,9*7,10,11,9*5,12,7,13*3,14,15*2,14*3,16,17*2,16,16," pathFormat="bundle://ja_home_region00_#.png" digits="4" />
+	</Image>
+</Image>

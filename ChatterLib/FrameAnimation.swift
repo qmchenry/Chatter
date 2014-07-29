@@ -23,15 +23,18 @@ public enum FrameAnimationStrategy: String {
 
 public class FrameAnimation {
     //public var firstFrame: Int = 13 //elsa, belle
-    public var firstFrame: Int = 0 //rapunzel, merida
+    //public var firstFrame: Int = 0 //rapunzel, merida
+    public var firstFrame: Int = 12 //jasmine
     //public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]] //elsa, belle
     //public var frameSets: [[Int]] = [[14,15,16],[17,18,19,20]] //rapunzel
-    public var frameSets: [[Int]] = [[14,15,16],[17,18,19]] //merida
+    //public var frameSets: [[Int]] = [[14,15,16],[17,18,19]] //merida
+    public var frameSets: [[Int]] = [[13,14,15],[16,17]] //jasmine
     public var currentFrameSetIndex = 0
     //public var filenameBase = "el_home_region00_" //elsa
     //public var filenameBase = "ra_homeregion00_" //rapunzel
     //public var filenameBase = "be_home_region00_" //belle
-    public var filenameBase = "me_home_region00_" //merida
+    //public var filenameBase = "me_home_region00_" //merida
+    public var filenameBase = "ja_home_region00_" //jasmine
     public var filenameExtension = ".png"
     public var digits = 4
     var currentFrameIndex = 0
