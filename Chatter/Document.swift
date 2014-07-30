@@ -10,6 +10,7 @@ import Cocoa
 import Foundation
 import CoreMedia
 import ChatterLib
+import AppKit
 
 enum PlaybackState {
     case idle, playing
@@ -20,11 +21,13 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var graphView: SPAudioGraphView!
     @IBOutlet weak var sequenceLabel: NSTextFieldCell!
+    @IBOutlet weak var whichPrincess: NSPopUpButton!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
     var audioFiles = ["test_vo","dx_frzn_016-120_anna","dx_frzn_017-530_anna","dx_frzn_025-540_elsa","dx_frzn_017-520_elsa"]
+    
     
     @IBAction func play(sender: AnyObject) {
         frameAnimation.reset()
@@ -46,6 +49,13 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         
+        whichPrincess.addItemsWithTitles(["Elsa","Belle","Jasmine","Merida","Rapunzel"])
+        //whichPrincess.selectItemWithTitle("Elsa").setAction(frameAnimation.initElsa())
+        //why doesn't that work??
+        
+
+        
+        
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("sw900yrs", withExtension: "wav"))
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
 //       setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_016-120_anna", withExtension: "wav"))
@@ -54,7 +64,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-520_elsa", withExtension: "wav"))
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/16.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
-
+        
     }
     
     func update() {
@@ -67,6 +77,10 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
             }
         }
     }
+    
+// Dragging and Dropping
+
+
 
 // NSOutlineViewDataSource
     
@@ -84,6 +98,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     func outlineView(outlineView: NSOutlineView!, isItemExpandable item: AnyObject!) -> Bool {
         return false
     }
+    
     
 
 // NSOutlineViewDelegate

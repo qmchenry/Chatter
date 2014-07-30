@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A238x" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="101000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6185.11"/>
     </dependencies>
     <objects>
@@ -10,6 +9,8 @@
                 <outlet property="graphView" destination="Ipx-Wb-aiS" id="zNT-ih-w2n"/>
                 <outlet property="imageView" destination="hbz-FU-VIu" id="IzM-UD-CyN"/>
                 <outlet property="sequenceLabel" destination="IKV-Zq-kvt" id="gQO-CQ-gjb"/>
+                <outlet property="tableView" destination="evA-hH-waf" id="5MU-M1-nnr"/>
+                <outlet property="whichPrincess" destination="q9q-5L-DG3" id="BpU-Be-AyH"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
@@ -144,13 +145,21 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="sne-Px-AAo"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MXZ-My-7qA">
-                                                        <rect key="frame" x="334" y="20" width="341" height="218"/>
+                                                        <rect key="frame" x="334" y="20" width="341" height="122"/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="IKV-Zq-kvt">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9q-5L-DG3">
+                                                        <rect key="frame" x="405" y="203" width="100" height="26"/>
+                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="FcU-9h-QBl">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="JmF-EK-iDx"/>
+                                                        </popUpButtonCell>
+                                                    </popUpButton>
                                                 </subviews>
                                             </customView>
                                         </subviews>
