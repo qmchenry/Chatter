@@ -20,7 +20,7 @@ public enum FrameAnimationStrategy: String {
     case Count = "Counts the number of times there's no sound"
     case lessRandom = "like both but not random"
     
-    static let allValues = [FirstSetUpDown, BothSetsUpDown, CurrentValue, both, Count, lessRandom]
+    public static let allValues = [FirstSetUpDown, BothSetsUpDown, CurrentValue, both, Count, lessRandom]
 }
 
 @objc public class FrameAnimation: NSObject {

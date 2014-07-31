@@ -105,15 +105,16 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
             whichPrincess.itemAtIndex(i).action = Selector("init" + whichPrincess.itemTitleAtIndex(i))
         }
         
-//        for strategy in FrameAnimationStrategy.allValues {
-//            whichStrategy.addItemWithTitle(strategy.toRaw())
-//        }
-//        
-//        for (var i = 0; i < 6; i++) {
-//            whichStrategy.itemAtIndex(i).enabled = true
-//            whichStrategy.itemAtIndex(i).target = frameAnimation
-//            whichStrategy.itemAtIndex(i).action = Selector("buildFrames(graphView.dataPoints, withStrategy: ." + "FrameAnimationStrategy.fromRaw(whichStrategy.itemTitleAtIndex(i))")
-//        }
+        for strategy in FrameAnimationStrategy.allValues {
+            whichStrategy.addItemWithTitle(strategy.toRaw())
+            whichStrategy.itemWithTitle(strategy.toRaw()).enabled = true
+        }
+        
+        for (var i = 0; i < 6; i++) {
+            whichStrategy.itemAtIndex(i).enabled = true
+            whichStrategy.itemAtIndex(i).target = frameAnimation
+            whichStrategy.itemAtIndex(i).action = Selector("buildFrames(graphView.dataPoints, withStrategy: ." + "FrameAnimationStrategy.fromRaw(whichStrategy.itemTitleAtIndex(i))")
+        }
 
         
         
