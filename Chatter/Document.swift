@@ -22,6 +22,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     @IBOutlet weak var graphView: SPAudioGraphView!
     @IBOutlet weak var sequenceLabel: NSTextFieldCell!
     @IBOutlet weak var whichPrincess: NSPopUpButton!
+    @IBOutlet weak var whichStrategy: NSPopUpButton!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
@@ -38,7 +39,6 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     
     public func initGeneral() {
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
-//        graphView!.asset = currentAsset
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
         sequenceLabel!.stringValue = frameAnimation.printSequence()
     }
@@ -78,6 +78,13 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         initGeneral()
     }
     
+    public func initAriel() {
+        frameAnimation.firstFrame = 0
+        frameAnimation.frameSets = [[14,15,16],[17,18,19]]
+        frameAnimation.filenameBase = "ar_home_region00_"
+        initGeneral()
+    }
+    
     func setAssetFileURL(fileURL: NSURL) {
         currentAsset = AVURLAsset(URL: fileURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
         player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
@@ -91,13 +98,25 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         
-        whichPrincess.addItemsWithTitles(["Elsa","Belle","Jasmine","Merida","Rapunzel"])
-    
-        for (var i = 0; i < 5; i++) {
+        whichPrincess.addItemsWithTitles(["Elsa","Belle","Jasmine","Merida","Rapunzel","Ariel"])
+        for (var i = 0; i < 6; i++) {
             whichPrincess.itemAtIndex(i).enabled = true
             whichPrincess.itemAtIndex(i).target = self
             whichPrincess.itemAtIndex(i).action = Selector("init" + whichPrincess.itemTitleAtIndex(i))
         }
+        
+//        for strategy in FrameAnimationStrategy.allValues {
+//            whichStrategy.addItemWithTitle(strategy.toRaw())
+//        }
+//        
+//        for (var i = 0; i < 6; i++) {
+//            whichStrategy.itemAtIndex(i).enabled = true
+//            whichStrategy.itemAtIndex(i).target = frameAnimation
+//            whichStrategy.itemAtIndex(i).action = Selector("buildFrames(graphView.dataPoints, withStrategy: ." + "FrameAnimationStrategy.fromRaw(whichStrategy.itemTitleAtIndex(i))")
+//        }
+
+        
+        
         
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("sw900yrs", withExtension: "wav"))
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
