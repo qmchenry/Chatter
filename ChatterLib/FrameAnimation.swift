@@ -21,46 +21,16 @@ public enum FrameAnimationStrategy: String {
     case lessRandom = "like both but not random"
 }
 
-public class FrameAnimation {
+@objc public class FrameAnimation: NSObject {
     
-    public var firstFrame: Int = 0
-    public var frameSets: [[Int]] = [[],[]]
+    public var firstFrame: Int = 13 //elsa
+    public var frameSets: [[Int]] = [[14,15,16,17],[18,19,20]] //elsa
     public var currentFrameSetIndex = 0
     public var filenameBase = "el_home_region00_" //elsa
     public var filenameExtension = ".png"
     public var digits = 4
     var currentFrameIndex = 0
     public var frames: [Int] = []   // designed frames
-    
-    func initElsa() {
-        firstFrame = 13 //elsa, belle
-        frameSets = [[14,15,16,17],[18,19,20]] //elsa, belle
-        filenameBase = "el_home_region00_" //elsa
-    }
-    
-    func initRapunzel() {
-        firstFrame = 0 //rapunzel, merida
-        frameSets = [[14,15,16],[17,18,19,20]] //rapunzel
-        filenameBase = "ra_homeregion00_" //rapunzel
-    }
-    
-    func initBelle() {
-        firstFrame = 13 //elsa, belle
-        frameSets = [[14,15,16,17],[18,19,20]] //elsa, belle
-        //public var filenameBase = "be_home_region00_" //belle
-    }
-    
-    func initMerida() {
-        firstFrame = 0 //rapunzel, merida
-        frameSets = [[14,15,16],[17,18,19]] //merida
-        filenameBase = "me_home_region00_" //merida
-    }
-    
-    func initJasmine() {
-        firstFrame = 12 //jasmine
-        frameSets = [[13,14,15],[16,17]] //jasmine
-        filenameBase = "ja_home_region00_" //jasmine
-    }
     
     public func buildFrames(data: Array<(time:Double, value:Float)>, withStrategy strategy:FrameAnimationStrategy = .CurrentValue) {
         

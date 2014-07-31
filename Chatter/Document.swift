@@ -24,7 +24,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     @IBOutlet weak var whichPrincess: NSPopUpButton!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
-    var frameAnimation = FrameAnimation()
+    @objc var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
     var audioFiles = ["test_vo","dx_frzn_016-120_anna","dx_frzn_017-530_anna","dx_frzn_025-540_elsa","dx_frzn_017-520_elsa"]
     
@@ -36,13 +36,55 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         state = .playing
     }
     
+    public func initGeneral() {
+        imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
+//        graphView!.asset = currentAsset
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
+        sequenceLabel!.stringValue = frameAnimation.printSequence()
+    }
+    
+    public func initElsa() {
+        frameAnimation.firstFrame = 13 //elsa, belle
+        frameAnimation.frameSets = [[14,15,16,17],[18,19,20]] //elsa, belle
+        frameAnimation.filenameBase = "el_home_region00_" //elsa
+        initGeneral()
+    }
+    
+    public func initRapunzel() {
+        frameAnimation.firstFrame = 0 //rapunzel, merida
+        frameAnimation.frameSets = [[14,15,16],[17,18,19,20]] //rapunzel
+        frameAnimation.filenameBase = "ra_homeregion00_" //rapunzel
+        initGeneral()
+    }
+    
+    public func initBelle() {
+        frameAnimation.firstFrame = 13 //elsa, belle
+        frameAnimation.frameSets = [[14,15,16,17],[18,19,20]] //elsa, belle
+        frameAnimation.filenameBase = "be_home_region00_" //belle
+        initGeneral()
+    }
+    
+    public func initMerida() {
+        frameAnimation.firstFrame = 0 //rapunzel, merida
+        frameAnimation.frameSets = [[14,15,16],[17,18,19]] //merida
+        frameAnimation.filenameBase = "me_home_region00_" //merida
+        initGeneral()
+    }
+    
+    public func initJasmine() {
+        frameAnimation.firstFrame = 12 //jasmine
+        frameAnimation.frameSets = [[13,14,15],[16,17]] //jasmine
+        frameAnimation.filenameBase = "ja_home_region00_" //jasmine
+        initGeneral()
+    }
+    
     func setAssetFileURL(fileURL: NSURL) {
         currentAsset = AVURLAsset(URL: fileURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey: true])
         player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
         player!.prepareToPlay()
         
         graphView!.asset = currentAsset
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .lessRandom)
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
         sequenceLabel!.stringValue = frameAnimation.printSequence()
     }
     
@@ -50,11 +92,12 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         super.windowControllerDidLoadNib(aController)
         
         whichPrincess.addItemsWithTitles(["Elsa","Belle","Jasmine","Merida","Rapunzel"])
-        //whichPrincess.selectItemWithTitle("Elsa").setAction(frameAnimation.initElsa())
-        //why doesn't that work??
-        
-
-        
+    
+        for (var i = 0; i < 5; i++) {
+            whichPrincess.itemAtIndex(i).enabled = true
+            whichPrincess.itemAtIndex(i).target = self
+            whichPrincess.itemAtIndex(i).action = Selector("init" + whichPrincess.itemTitleAtIndex(i))
+        }
         
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("sw900yrs", withExtension: "wav"))
 //        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
