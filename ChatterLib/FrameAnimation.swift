@@ -158,11 +158,11 @@ public enum FrameAnimationStrategy: String {
     }
     
     public func printSequence() -> String {
-        var seq = "frames : ["
+        var seq = ""
         for i in frames {
             seq += String(i) + ","
         }
-        return seq + "]"
+        return seq
     }
     
     public func reset() {
