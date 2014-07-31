@@ -72,7 +72,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     }
     
     public func initJasmine() {
-        frameAnimation.firstFrame = 12 //jasmine
+        frameAnimation.firstFrame = 0 //jasmine
         frameAnimation.frameSets = [[13,14,15],[16,17]] //jasmine
         frameAnimation.filenameBase = "ja_home_region00_" //jasmine
         initGeneral()
