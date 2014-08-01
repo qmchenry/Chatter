@@ -157,13 +157,33 @@ public enum FrameAnimationStrategy: String {
         println("frames = \(frames)")
     }
     
-    public func printSequence(shortened:Bool = false) -> String {
+    public func printSequence(shortened:Bool = true) -> String {
         var seq = ""
-        if (shortened) {
-            // 0,1*3,2,3,4-6,0
-        } else {
+        var count = 0 //counts duplicates
+        var runCount = 0 //looks for runs like 1-3, 4-8, etc.
+        
+        if (shortened == false) {
             for i in frames {
                 seq += String(i) + ","
+            }
+        } else {
+            for (var i = 0; i < frames.count; i++) {
+                if (frames[i+1] != frames[i]) {
+                    count = 0
+                    seq += String(frames[i]) + ","
+                }
+                else if frames[i] == frames[i+1] {
+                    count+=2
+                    seq = seq + String(frames[i]) + "*" + String(count) + ","
+                }
+                else if (frames[i+1] - 1 == frames[i]) {
+                    runCount++
+                    seq = seq + String(frames[i]) + "-" + String(frames[i+runCount]) + ","
+                }
+                else {
+                    seq += String(frames[i]) + ","
+                    
+                }
             }
         }
         return seq

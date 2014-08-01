@@ -100,7 +100,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         
         for strategy in FrameAnimationStrategy.allValues {
             whichStrategy.addItemWithTitle(strategy.toRaw())
-            whichStrategy.itemWithTitle(strategy.toRaw()).enabled = true
+//            whichStrategy.itemWithTitle(strategy.toRaw()).enabled = true
         }
         
         for (var i = 0; i < 6; i++) {
