@@ -29,6 +29,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     @IBOutlet weak var sequenceLabel: NSTextFieldCell!
     @IBOutlet weak var whichPrincess: NSPopUpButton!
     @IBOutlet weak var whichStrategy: NSPopUpButton!
+    @IBOutlet weak var whichSequence: NSPopUpButton!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
@@ -108,6 +109,15 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
             whichStrategy.itemAtIndex(i).target = self
             whichStrategy.itemAtIndex(i).action = Selector("strategyCallback:")
         }
+        
+        whichSequence.addItemsWithTitles(["short","long"])
+        whichSequence.itemWithTitle("short").enabled = true
+        whichSequence.itemWithTitle("long").enabled = true
+        whichSequence.itemWithTitle("short").target = frameAnimation
+        whichSequence.itemWithTitle("long").target = frameAnimation
+        whichSequence.itemWithTitle("short").action = Selector("printSequence.shortened = true")
+        whichSequence.itemWithTitle("long").action = Selector("printSequence.shortened = false")
+
         
         setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-530_anna", withExtension: "wav"))
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))

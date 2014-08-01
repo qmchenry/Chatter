@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A238x" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="101000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6185.11"/>
     </dependencies>
     <objects>
@@ -11,6 +12,7 @@
                 <outlet property="sequenceLabel" destination="IKV-Zq-kvt" id="gQO-CQ-gjb"/>
                 <outlet property="tableView" destination="evA-hH-waf" id="5MU-M1-nnr"/>
                 <outlet property="whichPrincess" destination="q9q-5L-DG3" id="BpU-Be-AyH"/>
+                <outlet property="whichSequence" destination="ree-2w-EpW" id="w2k-5t-k9B"/>
                 <outlet property="whichStrategy" destination="MQa-Uu-oZI" id="X49-VX-I7M"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
@@ -200,6 +202,14 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ree-2w-EpW" userLabel="Sequence">
+                                                        <rect key="frame" x="478" y="152" width="100" height="26"/>
+                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" id="W4m-Be-H5P">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" autoenablesItems="NO" id="EvN-tA-lxK"/>
+                                                        </popUpButtonCell>
+                                                    </popUpButton>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="MXZ-My-7qA" firstAttribute="leading" secondItem="hbz-FU-VIu" secondAttribute="trailing" constant="55" id="Anc-bh-G9V"/>
