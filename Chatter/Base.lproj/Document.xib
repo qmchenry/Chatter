@@ -152,6 +152,9 @@
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MXZ-My-7qA">
                                                         <rect key="frame" x="326" y="29" width="337" height="122"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="122" id="2Kj-PY-MzL"/>
+                                                        </constraints>
                                                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Multiline Label" drawsBackground="YES" id="IKV-Zq-kvt">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

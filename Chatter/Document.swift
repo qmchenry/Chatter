@@ -16,6 +16,12 @@ enum PlaybackState {
     case idle, playing
 }
 
+struct Princess {
+    var firstFrame: Int
+    var frameSets: [[Int]]
+    var filenameBase: String
+}
+
 class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
                             
     @IBOutlet weak var imageView: NSImageView!
@@ -27,8 +33,30 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
-    var audioFiles = ["test_vo","dx_frzn_016-120_anna","dx_frzn_017-530_anna","dx_frzn_025-540_elsa","dx_frzn_017-520_elsa"]
+    var strategy: FrameAnimationStrategy = .both {
+        didSet {
+            processFrames()
+        }
+    }
     
+    var princess: Princess? {
+    didSet {
+        frameAnimation.firstFrame = princess!.firstFrame
+        frameAnimation.frameSets = princess!.frameSets
+        frameAnimation.filenameBase = princess!.filenameBase
+        imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
+        processFrames()
+    }
+    }
+    let princesses = [
+        "Ariel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_"),
+        "Belle" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "be_home_region00_"),
+        "Elsa" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "el_home_region00_"),
+        "Jasmine" : Princess(firstFrame: 0, frameSets: [[13,14,15],[16,17]], filenameBase: "ja_home_region00_"),
+        "Merida" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "me_home_region00_"),
+        "Rapunzel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_")]
+
+    var audioFiles = ["test_vo","dx_frzn_016-120_anna","dx_frzn_017-530_anna","dx_frzn_025-540_elsa","dx_frzn_017-520_elsa"]
     
     @IBAction func play(sender: AnyObject) {
         frameAnimation.reset()
@@ -37,52 +65,13 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         state = .playing
     }
     
-    public func initGeneral() {
-        imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
+    func processFrames() {
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
         sequenceLabel!.stringValue = frameAnimation.printSequence()
     }
     
-    public func initElsa() {
-        frameAnimation.firstFrame = 13 //elsa, belle
-        frameAnimation.frameSets = [[14,15,16,17],[18,19,20]] //elsa, belle
-        frameAnimation.filenameBase = "el_home_region00_" //elsa
-        initGeneral()
-    }
-    
-    public func initRapunzel() {
-        frameAnimation.firstFrame = 0 //rapunzel, merida
-        frameAnimation.frameSets = [[14,15,16],[17,18,19,20]] //rapunzel
-        frameAnimation.filenameBase = "ra_homeregion00_" //rapunzel
-        initGeneral()
-    }
-    
-    public func initBelle() {
-        frameAnimation.firstFrame = 13 //elsa, belle
-        frameAnimation.frameSets = [[14,15,16,17],[18,19,20]] //elsa, belle
-        frameAnimation.filenameBase = "be_home_region00_" //belle
-        initGeneral()
-    }
-    
-    public func initMerida() {
-        frameAnimation.firstFrame = 0 //rapunzel, merida
-        frameAnimation.frameSets = [[14,15,16],[17,18,19]] //merida
-        frameAnimation.filenameBase = "me_home_region00_" //merida
-        initGeneral()
-    }
-    
-    public func initJasmine() {
-        frameAnimation.firstFrame = 0 //jasmine
-        frameAnimation.frameSets = [[13,14,15],[16,17]] //jasmine
-        frameAnimation.filenameBase = "ja_home_region00_" //jasmine
-        initGeneral()
-    }
-    
-    public func initAriel() {
-        frameAnimation.firstFrame = 0
-        frameAnimation.frameSets = [[14,15,16],[17,18,19]]
-        frameAnimation.filenameBase = "ar_home_region00_"
-        initGeneral()
+    func princessCallback(sender: NSMenuItem!) {
+        princess = princesses[sender.title]
     }
     
     func setAssetFileURL(fileURL: NSURL) {
@@ -95,14 +84,18 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         sequenceLabel!.stringValue = frameAnimation.printSequence()
     }
     
+    func strategyCallback(sender: NSMenuItem!) {
+        strategy = FrameAnimationStrategy.fromRaw(sender.title)!
+    }
+    
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         
-        whichPrincess.addItemsWithTitles(["Elsa","Belle","Jasmine","Merida","Rapunzel","Ariel"])
+        whichPrincess.addItemsWithTitles([String](princesses.keys))
         for (var i = 0; i < 6; i++) {
             whichPrincess.itemAtIndex(i).enabled = true
             whichPrincess.itemAtIndex(i).target = self
-            whichPrincess.itemAtIndex(i).action = Selector("init" + whichPrincess.itemTitleAtIndex(i))
+            whichPrincess.itemAtIndex(i).action = Selector("princessCallback:")
         }
         
         for strategy in FrameAnimationStrategy.allValues {
@@ -112,19 +105,11 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         
         for (var i = 0; i < 6; i++) {
             whichStrategy.itemAtIndex(i).enabled = true
-            whichStrategy.itemAtIndex(i).target = frameAnimation
-            whichStrategy.itemAtIndex(i).action = Selector("buildFrames(graphView.dataPoints, withStrategy: ." + "FrameAnimationStrategy.fromRaw(whichStrategy.itemTitleAtIndex(i))")
+            whichStrategy.itemAtIndex(i).target = self
+            whichStrategy.itemAtIndex(i).action = Selector("strategyCallback:")
         }
-
         
-        
-        
-//        setAssetFileURL(NSBundle.mainBundle().URLForResource("sw900yrs", withExtension: "wav"))
-//        setAssetFileURL(NSBundle.mainBundle().URLForResource("test_vo", withExtension: "wav"))
-//       setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_016-120_anna", withExtension: "wav"))
         setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-530_anna", withExtension: "wav"))
-//        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_025-540_elsa", withExtension: "wav"))
-//        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-520_elsa", withExtension: "wav"))
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/16.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
         
@@ -220,7 +205,6 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     
     init() {
         super.init()
-        // Add your subclass-specific initialization here.
     }
 
 }
