@@ -157,10 +157,14 @@ public enum FrameAnimationStrategy: String {
         println("frames = \(frames)")
     }
     
-    public func printSequence() -> String {
+    public func printSequence(shortened:Bool = false) -> String {
         var seq = ""
-        for i in frames {
-            seq += String(i) + ","
+        if (shortened) {
+            // 0,1*3,2,3,4-6,0
+        } else {
+            for i in frames {
+                seq += String(i) + ","
+            }
         }
         return seq
     }
