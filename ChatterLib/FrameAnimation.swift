@@ -157,34 +157,95 @@ public enum FrameAnimationStrategy: String {
         println("frames = \(frames)")
     }
     
-    public func printSequence(shortened:Bool = true) -> String {
+    //functions to shorten sequence in printSequence
+    
+    public func shortenSequences() -> [String] {
+        var seq : [String] = []
+        var inARow = 1 //counts duplicates
+        
+        for (var i = 0; i < frames.count-1; i++) {
+            if frames[i+1] == frames[i]+1 {
+                inARow++
+                if i == frames.count-2 {
+                    if inARow > 2 {
+                        seq += String(frames[i-inARow+1]) + "-" + String(frames[i+1])
+                        inARow = 1
+                    }
+                    else {
+                        inARow = 1
+                        seq += String(frames[i+1])
+                        if i == frames.count-2 {
+                            seq += String(frames[i+1])
+                        }
+                    }
+                    
+                }
+            }
+            else {
+                if inARow > 2 {
+                    seq += String(frames[i-inARow+1]) + "-" + String(frames[i])
+                    inARow = 1
+                }
+                else {
+                    inARow = 1
+                    seq += String(frames[i+1])
+                    if i == frames.count-2 {
+                        seq += String(frames[i+1])
+                    }
+                }
+            }
+        }
+        
+        return seq
+    }
+    
+    public func shortenDuplicates(var sequence : [String]) -> String {
         var seq = ""
-        var count = 0 //counts duplicates
-        var runCount = 0 //looks for runs like 1-3, 4-8, etc.
+        var count = 1 //counts duplicates
+        
+        for (var i = 1; i < sequence.count; i++) {
+            if sequence[i-1].bridgeToObjectiveC().length > 1 {
+                seq += sequence[i-1] + ","
+            }
+            else if sequence[i] == sequence[i-1] {
+                count++
+                sequence.removeAtIndex(i--)
+                if i == sequence.count-1 {
+                    seq += String(sequence[i]) + "*" + String(count)
+                }
+            }
+            else {
+                if count > 1 {
+                    seq += String(sequence[i-1]) + "*" + String(count) + ","
+                    count = 1
+                    if i == sequence.count-1 {
+                        seq += String(sequence[i])
+                    }
+                }
+                else {
+                    count = 1
+                    seq += String(sequence[i-1]) + ","
+                    if i == sequence.count-1 {
+                        seq += String(sequence[i])
+                    }
+                }
+            }
+        }
+        
+        return seq
+    }
+    
+    public func printSequence(var shortened : Bool = false) -> String {
+        var seq = ""
         
         if (shortened == false) {
             for i in frames {
                 seq += String(i) + ","
             }
         } else {
-            for (var i = 0; i < frames.count; i++) {
-                if (frames[i+1] != frames[i]) {
-                    count = 0
-                    seq += String(frames[i]) + ","
-                }
-                else if frames[i] == frames[i+1] {
-                    count+=2
-                    seq = seq + String(frames[i]) + "*" + String(count) + ","
-                }
-                else if (frames[i+1] - 1 == frames[i]) {
-                    runCount++
-                    seq = seq + String(frames[i]) + "-" + String(frames[i+runCount]) + ","
-                }
-                else {
-                    seq += String(frames[i]) + ","
-                    
-                }
-            }
+            println(shortenSequences())
+            println("shortenDuplicates = " + shortenDuplicates((shortenSequences())))
+            seq += shortenDuplicates(shortenSequences())
         }
         return seq
     }

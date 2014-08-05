@@ -29,12 +29,18 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     @IBOutlet weak var sequenceLabel: NSTextFieldCell!
     @IBOutlet weak var whichPrincess: NSPopUpButton!
     @IBOutlet weak var whichStrategy: NSPopUpButton!
-    @IBOutlet weak var whichSequence: NSPopUpButton!
+    @IBOutlet weak var whichSequence: NSButton!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
     var strategy: FrameAnimationStrategy = .both {
+        didSet {
+            processFrames()
+        }
+    }
+    
+    var shortSequence : Bool = true {
         didSet {
             processFrames()
         }
@@ -50,9 +56,9 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     }
     }
     let princesses = [
+        "Elsa" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "el_home_region00_"),
         "Ariel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_"),
         "Belle" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "be_home_region00_"),
-        "Elsa" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "el_home_region00_"),
         "Jasmine" : Princess(firstFrame: 0, frameSets: [[13,14,15],[16,17]], filenameBase: "ja_home_region00_"),
         "Merida" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "me_home_region00_"),
         "Rapunzel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_")]
@@ -68,7 +74,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     
     func processFrames() {
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
-        sequenceLabel!.stringValue = frameAnimation.printSequence()
+        sequenceLabel!.stringValue = frameAnimation.printSequence(shortened : shortSequence)
     }
     
     func princessCallback(sender: NSMenuItem!) {
@@ -81,12 +87,15 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         player!.prepareToPlay()
         
         graphView!.asset = currentAsset
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
-        sequenceLabel!.stringValue = frameAnimation.printSequence()
+        processFrames()
     }
     
     func strategyCallback(sender: NSMenuItem!) {
         strategy = FrameAnimationStrategy.fromRaw(sender.title)!
+    }
+    
+    func sequenceCallback(sender : NSButton!) {
+        shortSequence = (sender.state == NSOnState)
     }
     
     override func windowControllerDidLoadNib(aController: NSWindowController) {
@@ -110,13 +119,9 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
             whichStrategy.itemAtIndex(i).action = Selector("strategyCallback:")
         }
         
-        whichSequence.addItemsWithTitles(["short","long"])
-        whichSequence.itemWithTitle("short").enabled = true
-        whichSequence.itemWithTitle("long").enabled = true
-        whichSequence.itemWithTitle("short").target = frameAnimation
-        whichSequence.itemWithTitle("long").target = frameAnimation
-        whichSequence.itemWithTitle("short").action = Selector("printSequence.shortened = true")
-        whichSequence.itemWithTitle("long").action = Selector("printSequence.shortened = false")
+        whichSequence.title = "short?"
+        whichSequence.target = self
+        whichSequence.action = Selector("sequenceCallback:")
 
         
         setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-530_anna", withExtension: "wav"))
