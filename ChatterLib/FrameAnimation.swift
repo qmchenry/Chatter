@@ -171,9 +171,14 @@ public enum FrameAnimationStrategy: String {
                         seq += String(frames[i-inARow+1]) + "-" + String(frames[i+1])
                         inARow = 1
                     }
+                    else if inARow == 2 {
+                        seq += String(frames[i])
+                        seq += String(frames[i+1])
+                        inARow = 1
+                    }
                     else {
                         inARow = 1
-                        seq += String(frames[i+1])
+                        seq += String(frames[i])
                         if i == frames.count-2 {
                             seq += String(frames[i+1])
                         }
@@ -185,10 +190,22 @@ public enum FrameAnimationStrategy: String {
                 if inARow > 2 {
                     seq += String(frames[i-inARow+1]) + "-" + String(frames[i])
                     inARow = 1
+                    if i == frames.count-2 {
+                        seq += String(frames[i+1])
+                    }
+                }
+                else if inARow == 2 {
+                    seq += String(frames[i-1])
+                    seq += String(frames[i])
+                    if i == frames.count-2 {
+                        seq += String(frames[i])
+                        seq += String(frames[i+1])
+                    }
+                    inARow = 1
                 }
                 else {
                     inARow = 1
-                    seq += String(frames[i+1])
+                    seq += String(frames[i])
                     if i == frames.count-2 {
                         seq += String(frames[i+1])
                     }
@@ -204,8 +221,18 @@ public enum FrameAnimationStrategy: String {
         var count = 1 //counts duplicates
         
         for (var i = 1; i < sequence.count; i++) {
-            if sequence[i-1].bridgeToObjectiveC().length > 1 {
+            if sequence[i-1].bridgeToObjectiveC().length > 2 {
                 seq += sequence[i-1] + ","
+                if i == sequence.count-1 {
+                    if count > 1 {
+                        seq += String(sequence[i]) + "*" + String(count)
+                        count = 1
+                    }
+                    else {
+                        count = 1
+                        seq += String(sequence[i])
+                    }
+                }
             }
             else if sequence[i] == sequence[i-1] {
                 count++
@@ -243,8 +270,9 @@ public enum FrameAnimationStrategy: String {
                 seq += String(i) + ","
             }
         } else {
-            println(shortenSequences())
-            println("shortenDuplicates = " + shortenDuplicates((shortenSequences())))
+            println("frames = \(frames)")
+            println("shortenSequences = \(shortenSequences())")
+            println("shortenDuplicates = \(shortenDuplicates(shortenSequences()))")
             seq += shortenDuplicates(shortenSequences())
         }
         return seq
