@@ -218,7 +218,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         return false
     }
     
-    init() {
+    override init() {
         super.init()
     }
 

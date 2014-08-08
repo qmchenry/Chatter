@@ -14,7 +14,7 @@ public class SPURLAsset: AVURLAsset {
 
     var rawData:NSData?
     public var assetData:NSData? {
-        if (!rawData) {
+        if (rawData == nil) {
             rawData = SPAssetReader.dataFromAsset(self, downsampleFactor: 200)
         }
         return rawData

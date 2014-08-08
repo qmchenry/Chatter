@@ -8,6 +8,7 @@
 
 import Cocoa
 import ChatterLib
+import AVFoundation
 
 public class SPAudioGraphView: NSView {
 
@@ -15,7 +16,7 @@ public class SPAudioGraphView: NSView {
     let downsampleFactor = 200
     
     var assetData: NSData?
-    public var dataPoints: Array<(time:Double, value:Float)> = []
+    public var dataPoints: [(time:Double, value:Float)] = []
     public var asset: AVURLAsset? {
         didSet {
             SPAssetReader.setNoiseFloor(-50)
@@ -25,11 +26,12 @@ public class SPAudioGraphView: NSView {
             let desiredFrames = Int(frameCount())
             let totalFrames = Int(asset!.duration.value) / downsampleFactor
             let delta = Double(SPAssetReader.countOfAssetData(assetData)/desiredFrames)
-            var timeIndex = 0.0
+            var timeIndex:Double = 0.0
             for (var i=0; i<desiredFrames; i++) {
                 let index:Int = i * Int(totalFrames / desiredFrames)
-                let value = SPAssetReader.floatFromAssetData(assetData, index: index)
-                dataPoints += (timeIndex, value)
+                let value:Float = SPAssetReader.floatFromAssetData(assetData, index: index)
+                let dataPoint:(time:Double, value:Float) = (timeIndex, value)
+                dataPoints.append(dataPoint)
                 timeIndex += assetDuration / frameCount()
             }
             self.setNeedsDisplayInRect(self.frame)
@@ -38,7 +40,7 @@ public class SPAudioGraphView: NSView {
     
     public var assetDuration: Double {
         var duration = 0.0
-        if (asset) {
+        if (asset != nil) {
             duration = Double(asset!.duration.value) / Double(asset!.duration.timescale)
         }
         return duration;
@@ -48,14 +50,19 @@ public class SPAudioGraphView: NSView {
         return assetDuration * Double(frameRate)
     }
     
-    init(frame: NSRect) {
+    override init(frame: NSRect) {
         super.init(frame: frame)
         // Initialization code here.
     }
     
+    required public init(coder aDecoder: NSCoder!)
+    {
+        super.init(coder: aDecoder)
+    }
+    
     func drawCircleAtPoint(point: NSPoint) {
         let radius = 4;
-        let point = NSPoint(x: point.x - radius, y: point.y - radius)
+        let point = NSPoint(x: Int(point.x) - radius, y: Int(point.y) - radius)
         let size = NSSize(width: radius*2, height: radius*2)
         let rect = NSRect(origin: NSPointToCGPoint(point), size: NSSizeToCGSize(size))
         let bPath = NSBezierPath(ovalInRect: rect)
@@ -64,7 +71,7 @@ public class SPAudioGraphView: NSView {
     }
     
     func drawGraph() {
-        if (!assetData) {
+        if (assetData == nil) {
             return
         }
         var bPath:NSBezierPath = NSBezierPath(rect: frame)

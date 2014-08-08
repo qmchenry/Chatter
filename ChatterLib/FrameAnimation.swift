@@ -32,7 +32,7 @@ public enum FrameAnimationStrategy: String {
     public var filenameExtension = ".png"
     public var digits = 4
     var currentFrameIndex = 0
-    public var frames: [Int] = []   // designed frames
+    public var frames:[Int] = []   // designed frames
     
     public func buildFrames(data: Array<(time:Double, value:Float)>, withStrategy strategy:FrameAnimationStrategy = .CurrentValue) {
         
@@ -47,7 +47,7 @@ public enum FrameAnimationStrategy: String {
             var index = 0
             for value in normalized {
                 if (value < 0.1) {
-                    frames += firstFrame
+                    frames.append(firstFrame)
                 } else {
                     if (up) {
                         if (index+1 >= frameSets[currentFrameSetIndex].count) {
@@ -59,7 +59,7 @@ public enum FrameAnimationStrategy: String {
                         }
                     }
                     index += up ? 1 : -1
-                    frames += frameSets[currentFrameSetIndex][index]
+                    frames.append(frameSets[currentFrameSetIndex][index])
                 }
             } // case .FirstSetUpDown
             
@@ -70,7 +70,7 @@ public enum FrameAnimationStrategy: String {
             var index = 0
             for value in normalized {
                 if (value < 0.1) {
-                    frames += firstFrame
+                    frames.append(firstFrame)
                 }
                 else {
                     if (up) {
@@ -87,7 +87,7 @@ public enum FrameAnimationStrategy: String {
                     }
                     //index = WhichSet ? OtherFirstFrame : firstFrame
                     index += up ? 1 : -1
-                    frames += frameSets[currentFrameSetIndex][index]
+                    frames.append(frameSets[currentFrameSetIndex][index])
                 }
             } // case .BothSetsUpDown
             
@@ -97,7 +97,7 @@ public enum FrameAnimationStrategy: String {
             tempFrames += frameSets[0] //[13,14,15,16,17]
             for value in normalized {
                 let index = Int(value*Float(tempFrames.count-1))
-                frames += tempFrames[index]
+                frames.append(tempFrames[index])
             }// case .CurrentValue
             
         case .both:
@@ -110,7 +110,7 @@ public enum FrameAnimationStrategy: String {
                     tempFrames = [firstFrame] + frameSets[whichSet] //[13,18,19,20]
                 }
                 let index = Int(value*Float(tempFrames.count-1))
-                frames += tempFrames[index]
+                frames.append(tempFrames[index])
                 
             }// case .both
             
@@ -129,7 +129,7 @@ public enum FrameAnimationStrategy: String {
                 }
                 
                 let index = Int(value*Float(tempFrames.count-1))
-                frames += tempFrames[index]
+                frames.append(tempFrames[index])
             // a strategy attempting to switch sets based on the number of times there's no sound
             //... but ends up looking kind of crazy
             }// case .Count
@@ -148,7 +148,7 @@ public enum FrameAnimationStrategy: String {
                     }
                 }
                 let index = Int(value*Float(tempFrames.count-1))
-                frames += tempFrames[index]
+                frames.append(tempFrames[index])
             // a strategy trying to be less random than .both
             // but it ends up only using the second set of frames hmmm
             }// case .lessRandom
@@ -160,7 +160,7 @@ public enum FrameAnimationStrategy: String {
     //functions to shorten sequence in printSequence
     
     public func shortenSequences() -> [String] {
-        var seq : [String] = []
+        var seq:[String] = []
         var inARow = 1 //counts duplicates
         
         for (var i = 0; i < frames.count-1; i++) {
@@ -168,19 +168,19 @@ public enum FrameAnimationStrategy: String {
                 inARow++
                 if i == frames.count-2 {
                     if inARow > 2 {
-                        seq += String(frames[i-inARow+1]) + "-" + String(frames[i+1])
+                        seq.append(String(frames[i-inARow+1]) + "-" + String(frames[i+1]))
                         inARow = 1
                     }
                     else if inARow == 2 {
-                        seq += String(frames[i])
-                        seq += String(frames[i+1])
+                        seq.append(String(frames[i]))
+                        seq.append(String(frames[i+1]))
                         inARow = 1
                     }
                     else {
                         inARow = 1
-                        seq += String(frames[i])
+                        seq.append(String(frames[i]))
                         if i == frames.count-2 {
-                            seq += String(frames[i+1])
+                            seq.append(String(frames[i+1]))
                         }
                     }
                     
@@ -188,26 +188,26 @@ public enum FrameAnimationStrategy: String {
             }
             else {
                 if inARow > 2 {
-                    seq += String(frames[i-inARow+1]) + "-" + String(frames[i])
+                    seq.append(String(frames[i-inARow+1]) + "-" + String(frames[i]))
                     inARow = 1
                     if i == frames.count-2 {
-                        seq += String(frames[i+1])
+                        seq.append(String(frames[i+1]))
                     }
                 }
                 else if inARow == 2 {
-                    seq += String(frames[i-1])
-                    seq += String(frames[i])
+                    seq.append(String(frames[i-1]))
+                    seq.append(String(frames[i]))
                     if i == frames.count-2 {
-                        seq += String(frames[i])
-                        seq += String(frames[i+1])
+                        seq.append(String(frames[i]))
+                        seq.append(String(frames[i+1]))
                     }
                     inARow = 1
                 }
                 else {
                     inARow = 1
-                    seq += String(frames[i])
+                    seq.append(String(frames[i]))
                     if i == frames.count-2 {
-                        seq += String(frames[i+1])
+                        seq.append(String(frames[i+1]))
                     }
                 }
             }
@@ -216,21 +216,21 @@ public enum FrameAnimationStrategy: String {
         return seq
     }
     
-    public func shortenDuplicates(var sequence : [String]) -> String {
+    public func shortenDuplicates(var sequence:[String]) -> String {
         var seq = ""
         var count = 1 //counts duplicates
         
         for (var i = 1; i < sequence.count; i++) {
-            if sequence[i-1].bridgeToObjectiveC().length > 2 {
+            if countElements(sequence[i-1]) > 2 {
                 seq += sequence[i-1] + ","
                 if i == sequence.count-1 {
                     if count > 1 {
-                        seq += String(sequence[i]) + "*" + String(count)
+                        seq += sequence[i] + "*" + String(count)
                         count = 1
                     }
                     else {
                         count = 1
-                        seq += String(sequence[i])
+                        seq += sequence[i]
                     }
                 }
             }
@@ -238,22 +238,22 @@ public enum FrameAnimationStrategy: String {
                 count++
                 sequence.removeAtIndex(i--)
                 if i == sequence.count-1 {
-                    seq += String(sequence[i]) + "*" + String(count)
+                    seq += sequence[i] + "*" + String(count)
                 }
             }
             else {
                 if count > 1 {
-                    seq += String(sequence[i-1]) + "*" + String(count) + ","
+                    seq += sequence[i-1] + "*" + String(count) + ","
                     count = 1
                     if i == sequence.count-1 {
-                        seq += String(sequence[i])
+                        seq += sequence[i]
                     }
                 }
                 else {
                     count = 1
-                    seq += String(sequence[i-1]) + ","
+                    seq += sequence[i-1] + ","
                     if i == sequence.count-1 {
-                        seq += String(sequence[i])
+                        seq += sequence[i]
                     }
                 }
             }
@@ -302,7 +302,7 @@ public enum FrameAnimationStrategy: String {
     public func filenames(frameSetIndex: Int) -> [String] {
         var filenames:[String] = []
         for index in frameSets[frameSetIndex] {
-            filenames += filename(index)
+            filenames.append(filename(index))
         }
         return filenames
     }
@@ -315,7 +315,7 @@ public enum FrameAnimationStrategy: String {
         return filename(frameSets[currentFrameSetIndex][index%count()])
     }
     
-    public init() {
+    public override init() {
         
     }
     
@@ -325,7 +325,7 @@ public enum FrameAnimationStrategy: String {
         let scale:Float = 1.0/(max-min)
         var normalized = [Float]()
         for (time,value) in data {
-            normalized += (value-min)*scale
+            normalized.append((value-min)*scale)
         }
         return normalized
     }
