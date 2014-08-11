@@ -11,9 +11,12 @@ import ChatterLib
 import AVFoundation
 
 public class SPAudioGraphView: NSView {
-
-    let frameRate = 16 // frames/sec
+    public var frameRate = 16 // frames/sec
     let downsampleFactor = 200
+    
+    public func setFrameRate(newvalue : Int) {
+        frameRate = newvalue
+    }
     
     var assetData: NSData?
     public var dataPoints: [(time:Double, value:Float)] = []

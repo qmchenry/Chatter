@@ -30,6 +30,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     @IBOutlet weak var whichPrincess: NSPopUpButton!
     @IBOutlet weak var whichStrategy: NSPopUpButton!
     @IBOutlet weak var whichSequence: NSButton!
+    @IBOutlet weak var frameRate: NSTextField!
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
@@ -47,14 +48,21 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     }
     
     var princess: Princess? {
-    didSet {
-        frameAnimation.firstFrame = princess!.firstFrame
-        frameAnimation.frameSets = princess!.frameSets
-        frameAnimation.filenameBase = princess!.filenameBase
-        imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
-        processFrames()
+        didSet {
+            frameAnimation.firstFrame = princess!.firstFrame
+            frameAnimation.frameSets = princess!.frameSets
+            frameAnimation.filenameBase = princess!.filenameBase
+            imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
+            processFrames()
+        }
     }
+    
+    var setFrameRate : Int?{
+        didSet {
+            processFrames()
+        }
     }
+    
     let princesses = [
         "Elsa" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "el_home_region00_"),
         "Ariel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_"),
@@ -75,6 +83,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     func processFrames() {
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
         sequenceLabel!.stringValue = frameAnimation.printSequence(shortened : shortSequence)
+        graphView.setFrameRate(frameRate.value() as Int)
     }
     
     func princessCallback(sender: NSMenuItem!) {
