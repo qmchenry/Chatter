@@ -83,7 +83,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     func processFrames() {
         frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
         sequenceLabel!.stringValue = frameAnimation.printSequence(shortened : shortSequence)
-        graphView.setFrameRate(frameRate.value() as Int)
+        graphView.setFrameRate(frameRate.integerValue)
     }
     
     func princessCallback(sender: NSMenuItem!) {
