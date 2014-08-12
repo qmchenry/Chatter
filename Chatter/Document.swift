@@ -22,7 +22,7 @@ struct Princess {
     var filenameBase: String
 }
 
-class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
+@objc class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
                             
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var graphView: SPAudioGraphView!
@@ -203,7 +203,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
     
     
     override class func autosavesInPlace() -> Bool {
-        return true
+        return false
     }
 
     override var windowNibName: String {
@@ -211,12 +211,44 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this property and override -makeWindowControllers instead.
         return "Document"
     }
+    
+    func settings() -> NSData! {
+        return NSData()
+    }
+    
+    override func fileWrapperOfType(typeName: String!, error outError: NSErrorPointer) -> NSFileWrapper! {
+        let data = NSKeyedArchiver.archivedDataWithRootObject(settings())
+        let wrapper = NSFileWrapper(regularFileWithContents: data)
+        return wrapper
+    }
+    
+    override func readFromFileWrapper(fileWrapper: NSFileWrapper!, ofType typeName: String!, error outError: NSErrorPointer) -> Bool {
+        // set settings
+        return true
+    }
+    
+//    - (NSFileWrapper *)fileWrapperOfType:(NSString *)typeName error:(NSError **)outError {
+//    NSData *settingsData = [NSKeyedArchiver archivedDataWithRootObject:[self documentSettings]];
+//    NSFileWrapper *settingsWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:settingsData];
+//    NSFileWrapper *maskWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:self.subregionData];
+//    
+//    NSFileWrapper *mainWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:@{@"settings": settingsWrapper, @"subregionData": maskWrapper}];
+//    return mainWrapper;
+//    }
+//    
+//    - (BOOL)readFromFileWrapper:(NSFileWrapper *)fileWrapper ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError {
+//    NSFileWrapper *settingsWrapper = [[fileWrapper fileWrappers] objectForKey:@"settings"];
+//    self.settings = [NSKeyedUnarchiver unarchiveObjectWithData:[settingsWrapper regularFileContents]];
+//    self.subregionData = [[[[fileWrapper fileWrappers] objectForKey:@"subregionData"] regularFileContents] mutableCopy];
+//    return YES;
+//    }
+
 
     override func dataOfType(typeName: String?, error outError: NSErrorPointer) -> NSData? {
         // Insert code here to write your document to data of the specified type. If outError != nil, ensure that you create and set an appropriate error when returning nil.
         // You can also choose to override fileWrapperOfType:error:, writeToURL:ofType:error:, or writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-        outError.memory = NSError.errorWithDomain(NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        return nil
+        outError.memory = nil
+        return NSData()
     }
 
     override func readFromData(data: NSData?, ofType typeName: String?, error outError: NSErrorPointer) -> Bool {
@@ -224,7 +256,7 @@ class Document: NSDocument, NSOutlineViewDataSource, NSOutlineViewDelegate {
         // You can also choose to override readFromFileWrapper:ofType:error: or readFromURL:ofType:error: instead.
         // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
         outError.memory = NSError.errorWithDomain(NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        return false
+        return true
     }
     
     override init() {

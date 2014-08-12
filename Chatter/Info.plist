@@ -15,6 +15,10 @@
 			<string>ChatterFile</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.smallplanet.Chatter</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>Chatter.Document</string>
 		</dict>
@@ -45,5 +49,36 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+				<string>public.composite-content</string>
+				<string>public.directory</string>
+				<string>public.item</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Chatter File</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.smallplanet.Chatter</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.nspboard-type</key>
+				<array>
+					<string>Chatter</string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chatter</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/octet-stream</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
