@@ -11,34 +11,37 @@ import ChatterLib
 import AVFoundation
 
 public class SPAudioGraphView: NSView {
-    public var frameRate = 16 // frames/sec
-    let downsampleFactor = 200
-    
-    public func setFrameRate(newvalue : Int) {
-        frameRate = newvalue
+    public var frameRate:Int = 16 {
+        didSet {
+            processFrames()
+        }
     }
-    
+    let downsampleFactor = 200
+        
     var assetData: NSData?
     public var dataPoints: [(time:Double, value:Float)] = []
     public var asset: AVURLAsset? {
         didSet {
             SPAssetReader.setNoiseFloor(-50)
             assetData = SPAssetReader.dataFromAsset(asset, downsampleFactor: downsampleFactor)
-            
-            dataPoints.removeAll(keepCapacity: true)
-            let desiredFrames = Int(frameCount())
-            let totalFrames = Int(asset!.duration.value) / downsampleFactor
-            let delta = Double(SPAssetReader.countOfAssetData(assetData)/desiredFrames)
-            var timeIndex:Double = 0.0
-            for (var i=0; i<desiredFrames; i++) {
-                let index:Int = i * Int(totalFrames / desiredFrames)
-                let value:Float = SPAssetReader.floatFromAssetData(assetData, index: index)
-                let dataPoint:(time:Double, value:Float) = (timeIndex, value)
-                dataPoints.append(dataPoint)
-                timeIndex += assetDuration / frameCount()
-            }
-            self.setNeedsDisplayInRect(self.frame)
+            processFrames()
         }
+    }
+    
+    public func processFrames() {
+        dataPoints.removeAll(keepCapacity: true)
+        let desiredFrames = Int(frameCount())
+        let totalFrames = Int(asset!.duration.value) / downsampleFactor
+        let delta = Double(SPAssetReader.countOfAssetData(assetData)/desiredFrames)
+        var timeIndex:Double = 0.0
+        for (var i=0; i<desiredFrames; i++) {
+            let index:Int = i * Int(totalFrames / desiredFrames)
+            let value:Float = SPAssetReader.floatFromAssetData(assetData, index: index)
+            let dataPoint:(time:Double, value:Float) = (timeIndex, value)
+            dataPoints.append(dataPoint)
+            timeIndex += assetDuration / frameCount()
+        }
+        self.setNeedsDisplayInRect(self.frame)
     }
     
     public var assetDuration: Double {
@@ -55,7 +58,6 @@ public class SPAudioGraphView: NSView {
     
     override init(frame: NSRect) {
         super.init(frame: frame)
-        // Initialization code here.
     }
     
     required public init(coder aDecoder: NSCoder!)
@@ -137,7 +139,6 @@ public class SPAudioGraphView: NSView {
     
     override public func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        println(dirtyRect)
         drawGraph()
     }
 }

@@ -154,7 +154,6 @@ public enum FrameAnimationStrategy: String {
             }// case .lessRandom
             
         } // switch
-        println("frames = \(frames)")
     }
     
     //functions to shorten sequence in printSequence

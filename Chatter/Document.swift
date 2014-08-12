@@ -30,7 +30,8 @@ struct Princess {
     @IBOutlet weak var whichPrincess: NSPopUpButton!
     @IBOutlet weak var whichStrategy: NSPopUpButton!
     @IBOutlet weak var whichSequence: NSButton!
-    @IBOutlet weak var frameRate: NSTextField!
+    @IBOutlet weak var frameRateField: NSTextField!
+
     var currentAsset: AVURLAsset?
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
@@ -57,10 +58,24 @@ struct Princess {
         }
     }
     
-    var setFrameRate : Int?{
+    var frameRate: Int?{
         didSet {
+            graphView.frameRate = frameRate!
+            graphView.processFrames()
             processFrames()
         }
+    }
+    
+    @IBAction func frameRateFieldCallback(sender: NSTextField!) {
+        if let newRate = sender?.integerValue {
+            frameRate = newRate
+        }
+    }
+    
+    func processFrames() {
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
+        graphView.processFrames()
+        sequenceLabel!.stringValue = frameAnimation.printSequence(shortened : shortSequence)
     }
     
     let princesses = [
@@ -80,12 +95,6 @@ struct Princess {
         state = .playing
     }
     
-    func processFrames() {
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
-        sequenceLabel!.stringValue = frameAnimation.printSequence(shortened : shortSequence)
-        graphView.setFrameRate(frameRate.integerValue)
-    }
-    
     func princessCallback(sender: NSMenuItem!) {
         princess = princesses[sender.title]
     }
@@ -101,6 +110,7 @@ struct Princess {
     
     func strategyCallback(sender: NSMenuItem!) {
         strategy = FrameAnimationStrategy.fromRaw(sender.title)!
+        
     }
     
     func sequenceCallback(sender : NSButton!) {
@@ -128,7 +138,6 @@ struct Princess {
             whichStrategy.itemAtIndex(i).action = Selector("strategyCallback:")
         }
         
-        whichSequence.title = "short?"
         whichSequence.target = self
         whichSequence.action = Selector("sequenceCallback:")
 
@@ -137,12 +146,12 @@ struct Princess {
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/16.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
         
+        frameRateField.integerValue = graphView.frameRate;
     }
     
     func update() {
         if (state == .playing) {
             let frameName = frameAnimation.nextFrame()
-            println("frameName = \(frameName)")
             imageView!.image = NSImage(named: frameName)
             if (!frameAnimation.hasNextFrame()) {
                 state = .idle
@@ -176,7 +185,6 @@ struct Princess {
 // NSOutlineViewDelegate
 
     func outlineView(outlineView: NSOutlineView!, dataCellForTableColumn tableColumn: NSTableColumn!, item: AnyObject!) -> NSCell! {
-        println("item = \(item)")
         let text = item as String!
         return NSCell(textCell: text)
     }
@@ -193,7 +201,6 @@ struct Princess {
     }
 
     func outlineViewSelectionDidChange(notification: NSNotification!) {
-        println("didChange \(notification)")
         let outlineView = notification!.object as NSOutlineView
         let selectedRow = outlineView.selectedRow
         setAssetFileURL(NSBundle.mainBundle().URLForResource(audioFiles[selectedRow], withExtension: "wav"))
