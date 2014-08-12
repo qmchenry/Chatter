@@ -18,9 +18,10 @@ public enum FrameAnimationStrategy: String {
     case CurrentValue = "Based on current value"
     case both = "Both sets and current value"
     case Count = "Counts the number of times there's no sound"
-    case lessRandom = "like both but not random"
+    case lessRandom = "Like both but not random"
+    case oneByOne = "Jump only one frame at a time"
     
-    public static let allValues = [FirstSetUpDown, BothSetsUpDown, CurrentValue, both, Count, lessRandom]
+    public static let allValues = [FirstSetUpDown, BothSetsUpDown, CurrentValue, both, Count, lessRandom, oneByOne]
 }
 
 @objc public class FrameAnimation: NSObject {
@@ -153,6 +154,24 @@ public enum FrameAnimationStrategy: String {
             // but it ends up only using the second set of frames hmmm
             }// case .lessRandom
             
+        case .oneByOne:
+            // only uses first frameset and never changes index by more than 1 at a time
+            frames.removeAll(keepCapacity: true)
+            var whichSet = 0
+            var currentIndex = 0
+            var tempFrames = [firstFrame] + frameSets[whichSet]
+            let count = tempFrames.count
+            for value in normalized {
+                let desiredIndex = Int(value*Float(count-1))
+                var deltaIndex = desiredIndex - currentIndex;
+                if abs(deltaIndex) > 1 {
+                    deltaIndex = deltaIndex / abs(deltaIndex)
+                }
+                println("oneByOne current=\(currentIndex) desired=\(desiredIndex) delta=\(deltaIndex)")
+                currentIndex += deltaIndex
+                frames.append(tempFrames[currentIndex])
+            }// case .oneByOne
+        
         } // switch
     }
     

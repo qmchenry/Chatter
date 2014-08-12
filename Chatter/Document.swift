@@ -36,7 +36,7 @@ struct Princess {
     var player: AVAudioPlayer?
     @objc var frameAnimation = FrameAnimation()
     var state = PlaybackState.idle
-    var strategy: FrameAnimationStrategy = .both {
+    var strategy: FrameAnimationStrategy = .oneByOne {
         didSet {
             processFrames()
         }
@@ -73,7 +73,7 @@ struct Princess {
     }
     
     func processFrames() {
-        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: .both)
+        frameAnimation.buildFrames(graphView.dataPoints, withStrategy: strategy)
         graphView.processFrames()
         sequenceLabel!.stringValue = frameAnimation.printSequence(shortened : shortSequence)
     }
@@ -142,11 +142,12 @@ struct Princess {
         whichSequence.action = Selector("sequenceCallback:")
 
         
-        setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-530_anna", withExtension: "wav"))
+    setAssetFileURL(NSBundle.mainBundle().URLForResource("dx_frzn_017-530_anna", withExtension: "wav"))
         imageView!.image = NSImage(named: frameAnimation.filename(frameAnimation.firstFrame))
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0/16.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
         
         frameRateField.integerValue = graphView.frameRate;
+        frameRate = graphView.frameRate
     }
     
     func update() {
