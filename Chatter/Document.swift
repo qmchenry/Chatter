@@ -127,15 +127,15 @@ struct Princess {
             whichPrincess.itemAtIndex(i).action = Selector("princessCallback:")
         }
         
-        for strategy in FrameAnimationStrategy.allValues {
-            whichStrategy.addItemWithTitle(strategy.toRaw())
-//            whichStrategy.itemWithTitle(strategy.toRaw()).enabled = true
-        }
-        
-        for (var i = 0; i < 6; i++) {
-            whichStrategy.itemAtIndex(i).enabled = true
-            whichStrategy.itemAtIndex(i).target = self
-            whichStrategy.itemAtIndex(i).action = Selector("strategyCallback:")
+        for strat in FrameAnimationStrategy.allValues {
+            whichStrategy.addItemWithTitle(strat.toRaw())
+            let item = whichStrategy.itemArray.last as NSMenuItem!
+            item.enabled = true
+            item.target = self
+            item.action = Selector("strategyCallback:")
+            if (strategy == strat) {
+                whichStrategy.selectItem(item)
+            }
         }
         
         whichSequence.target = self
