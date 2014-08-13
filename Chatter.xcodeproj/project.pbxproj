@@ -142,6 +142,9 @@
 		A95FFB4C1982CA0B00CDBE54 /* SPAudioGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB481982CA0B00CDBE54 /* SPAudioGraphView.swift */; };
 		A95FFB4D1982CA0B00CDBE54 /* SPURLAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95FFB491982CA0B00CDBE54 /* SPURLAsset.swift */; };
 		A95FFB4F1982CB3B00CDBE54 /* test_vo.wav in Resources */ = {isa = PBXBuildFile; fileRef = A95FFB4E1982CB3B00CDBE54 /* test_vo.wav */; };
+		A964A56B199BE73B0087D055 /* balsam.wav in Resources */ = {isa = PBXBuildFile; fileRef = A964A568199BE73A0087D055 /* balsam.wav */; };
+		A964A56C199BE73B0087D055 /* bayou.wav in Resources */ = {isa = PBXBuildFile; fileRef = A964A569199BE73A0087D055 /* bayou.wav */; };
+		A964A56D199BE73B0087D055 /* sweetie.wav in Resources */ = {isa = PBXBuildFile; fileRef = A964A56A199BE73A0087D055 /* sweetie.wav */; };
 		C42E329C1983DB2C00C98257 /* el_home_base.png in Resources */ = {isa = PBXBuildFile; fileRef = C42E32841983DB2C00C98257 /* el_home_base.png */; };
 		C42E329D1983DB2C00C98257 /* el_home_region00_0000.png in Resources */ = {isa = PBXBuildFile; fileRef = C42E32851983DB2C00C98257 /* el_home_region00_0000.png */; };
 		C42E329E1983DB2C00C98257 /* el_home_region00_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C42E32861983DB2C00C98257 /* el_home_region00_0001.png */; };
@@ -371,6 +374,9 @@
 		A95FFB481982CA0B00CDBE54 /* SPAudioGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAudioGraphView.swift; sourceTree = "<group>"; };
 		A95FFB491982CA0B00CDBE54 /* SPURLAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPURLAsset.swift; sourceTree = "<group>"; };
 		A95FFB4E1982CB3B00CDBE54 /* test_vo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test_vo.wav; sourceTree = "<group>"; };
+		A964A568199BE73A0087D055 /* balsam.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = balsam.wav; sourceTree = "<group>"; };
+		A964A569199BE73A0087D055 /* bayou.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bayou.wav; sourceTree = "<group>"; };
+		A964A56A199BE73A0087D055 /* sweetie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sweetie.wav; sourceTree = "<group>"; };
 		C42E32841983DB2C00C98257 /* el_home_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = el_home_base.png; sourceTree = "<group>"; };
 		C42E32851983DB2C00C98257 /* el_home_region00_0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = el_home_region00_0000.png; sourceTree = "<group>"; };
 		C42E32861983DB2C00C98257 /* el_home_region00_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = el_home_region00_0001.png; sourceTree = "<group>"; };
@@ -614,6 +620,9 @@
 				A95FFB011982C67300CDBE54 /* Document.xib */,
 				A95FFB041982C67300CDBE54 /* Images.xcassets */,
 				A95FFB061982C67300CDBE54 /* MainMenu.xib */,
+				A964A568199BE73A0087D055 /* balsam.wav */,
+				A964A569199BE73A0087D055 /* bayou.wav */,
+				A964A56A199BE73A0087D055 /* sweetie.wav */,
 				C4BB803419868BD200032858 /* sw900yrs.wav */,
 				0BD81A9F1986C7DB00AE2C5F /* dx_frzn_016-120_anna.wav */,
 				0BD81AA31986C8EB00AE2C5F /* dx_frzn_017-530_anna.wav */,
@@ -910,6 +919,7 @@
 				0BD81AC71986EDF400AE2C5F /* ra_homeregion00_0005.png in Resources */,
 				0BDE93711988321B0047F47F /* be_home_region00_0003.png in Resources */,
 				0BDFDF5C198ACF330006ECB8 /* ar_home_region00_0008.png in Resources */,
+				A964A56B199BE73B0087D055 /* balsam.wav in Resources */,
 				0BDE93821988321B0047F47F /* be_home_region00_0020.png in Resources */,
 				0BD81AC81986EDF400AE2C5F /* ra_homeregion00_0006.png in Resources */,
 				0BDE93A6198835DA0047F47F /* me_home_region00_0007.png in Resources */,
@@ -953,10 +963,12 @@
 				0BDFDF62198ACF330006ECB8 /* ar_home_region00_0014.png in Resources */,
 				0BD81ACF1986EDF400AE2C5F /* ra_homeregion00_0013.png in Resources */,
 				0BD81ACD1986EDF400AE2C5F /* ra_homeregion00_0011.png in Resources */,
+				A964A56D199BE73B0087D055 /* sweetie.wav in Resources */,
 				0BD81ACA1986EDF400AE2C5F /* ra_homeregion00_0008.png in Resources */,
 				0BDE93A7198835DA0047F47F /* me_home_region00_0008.png in Resources */,
 				0BD81AD21986EDF400AE2C5F /* ra_homeregion00_0016.png in Resources */,
 				0BDE93CD198837480047F47F /* ja_home_region00_0001.png in Resources */,
+				A964A56C199BE73B0087D055 /* bayou.wav in Resources */,
 				C42E32AC1983DB2C00C98257 /* el_home_region00_0015.png in Resources */,
 				0BDE93751988321B0047F47F /* be_home_region00_0007.png in Resources */,
 				0BDE93CE198837480047F47F /* ja_home_region00_0002.png in Resources */,
