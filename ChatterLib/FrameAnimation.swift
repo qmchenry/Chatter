@@ -20,8 +20,9 @@ public enum FrameAnimationStrategy: String {
     case Count = "Counts the number of times there's no sound"
     case lessRandom = "Like both but not random"
     case oneByOne = "Jump only one frame at a time"
+    case oneByOneLookAhead = "Look before you leap, jump one frame at a time"
     
-    public static let allValues = [FirstSetUpDown, BothSetsUpDown, CurrentValue, both, Count, lessRandom, oneByOne]
+    public static let allValues = [FirstSetUpDown, BothSetsUpDown, CurrentValue, both, Count, lessRandom, oneByOne, oneByOneLookAhead]
 }
 
 @objc public class FrameAnimation: NSObject {
@@ -171,8 +172,55 @@ public enum FrameAnimationStrategy: String {
                 currentIndex += deltaIndex
                 frames.append(tempFrames[currentIndex])
             }// case .oneByOne
-        
+
+        case .oneByOneLookAhead:
+            // only uses first frameset and never changes index by more than 1 at a time
+            // and looks frameSet.count-ish steps ahead to see if it needs to start closing ahead of time
+            frames.removeAll(keepCapacity: true)
+            let closedThreshold = 0.15
+            var whichSet = 0
+            var currentIndex:Int = 0
+            var tempFrames = [firstFrame] + frameSets[whichSet]
+            let count = tempFrames.count
+            var deltaIndex = 0
+            for (var i=0; i<normalized.count; i++) {
+                if i == normalized.count - 1 {
+                    deltaIndex = 0
+                    currentIndex = 0
+                } else if (normalized.count - i < currentIndex + 1) {
+                    deltaIndex = -1
+                    println("oneByOne current=\(currentIndex)  --- lookahead end")
+                } else {
+                    let value = normalized[i]
+                    if currentIndex > 0 {
+                        for (var step=0; step<currentIndex; step++) {
+                            let index = step + i
+                            if Float(normalized[index]) < Float(closedThreshold) {
+                                // found a case where we need to slide down to mouth closed
+                                for (var j=0; j<step; j++) {
+                                    currentIndex--
+                                    frames.append(tempFrames[currentIndex])
+                                    i++
+                                    println("oneByOne current=\(currentIndex)  --- lookahead")
+                                }
+                                continue
+                            }
+                        }
+                        
+                    }
+                    let desiredIndex = Int(value*Float(count-1))
+                    deltaIndex = desiredIndex - currentIndex;
+                    if abs(deltaIndex) > 1 {
+                        deltaIndex = deltaIndex / abs(deltaIndex)
+                    }
+                    println("oneByOne current=\(currentIndex) desired=\(desiredIndex) delta=\(deltaIndex)")
+                }
+                currentIndex += deltaIndex
+                frames.append(tempFrames[currentIndex])
+            }// case .oneByOneLookAhead
+
         } // switch
+        println("frames = \(frames)")
     }
     
     //functions to shorten sequence in printSequence

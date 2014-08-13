@@ -81,7 +81,7 @@ struct Princess {
     let princesses = [
         "Elsa" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "el_home_region00_"),
         "Ariel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_"),
-        "Belle" : Princess(firstFrame: 13, frameSets: [[14,15,16,17],[18,19,20]], filenameBase: "be_home_region00_"),
+        "Belle" : Princess(firstFrame: 13, frameSets: [[14,15,16],[18,19,20]], filenameBase: "be_home_region00_"),
         "Jasmine" : Princess(firstFrame: 0, frameSets: [[13,14,15],[16,17]], filenameBase: "ja_home_region00_"),
         "Merida" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "me_home_region00_"),
         "Rapunzel" : Princess(firstFrame: 0, frameSets: [[14,15,16],[17,18,19]], filenameBase: "ar_home_region00_")]
